@@ -25,8 +25,8 @@ export const HERO_DATA: HeroConfig = {
   heroImage: "/assets/heroImage.png",
   playStoreUrl: "https://play.google.com/store", // Click karne par yahan redirect hoga
   appStoreUrl: "https://apps.apple.com", // Click karne par yahan redirect hoga
-  playStoreBadge: "/assets/playStore.png", // Play Store ki button image
-  appStoreBadge: "/assets/appleStore.png", // App Store ki button image
+  playStoreBadge: "/assets/playstore.png", // Play Store ki button image
+  appStoreBadge: "/assets/apple.png", // App Store ki button image
   stats: [
     { label: "AI-Powered", value: "Receipt & Voice Entry" },
     { label: "Cloud Sync", value: "100% Secure" },

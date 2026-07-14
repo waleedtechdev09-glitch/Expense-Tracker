@@ -58,7 +58,7 @@ const Navbar: React.FC<NavbarProps> = ({
   };
 
   return (
-    <nav className="sticky top-0 z-50 w-full bg-[#030e21]/80 backdrop-blur-md border-b border-slate-800 text-white px-6 py-4 flex items-center justify-between transition-all duration-200">
+    <nav className="sticky top-0 z-50 w-full bg-[#081B3A] backdrop-blur-md border-b border-slate-800 text-white px-6 py-4 flex items-center justify-between transition-all duration-200">
       {/* Left: Dynamic Brand Logo & Name */}
       <div className="flex items-center gap-3 cursor-pointer">
         {logoSrc && !imageError ? (

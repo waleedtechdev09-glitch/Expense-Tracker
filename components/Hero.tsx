@@ -10,13 +10,24 @@ interface HeroProps {
 
 const Hero: React.FC<HeroProps> = ({ data = HERO_DATA }) => {
   return (
-    <section className="relative w-full min-h-[90vh] bg-[#020813] text-white flex items-center overflow-hidden py-12 md:py-20 px-6 md:px-16 lg:px-24">
+    <section className="relative w-full min-h-[90vh] bg-[#081B3A] text-white flex items-center overflow-hidden py-12 md:py-20 px-6 md:px-16 lg:px-24">
+      {/* Background Image Layer */}
+      <div className="absolute inset-0 w-full h-full pointer-events-none z-0 select-none opacity-40">
+        <Image
+          src="/assets/bg-image.png"
+          alt="Background Texture"
+          fill
+          className="object-cover"
+          priority
+        />
+      </div>
+
       {/* Background global radial glow */}
-      <div className="absolute right-[-10%] top-[20%] w-[600px] h-[600px] bg-blue-900/15 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute right-[-10%] top-[20%] w-[600px] h-[600px] bg-blue-900/15 rounded-full blur-[150px] pointer-events-none z-0" />
 
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-4 items-center relative z-10">
         {/* Left Side: Content & Stats */}
-        <div className="lg:col-span-6 flex flex-col justify-center">
+        <div className="lg:col-span-6 flex flex-col justify-center items-start text-left">
           {/* Title with Manrope Font */}
           <h1 className="font-manrope text-4xl sm:text-5xl md:text-6xl lg:text-[68px] font-medium tracking-tight leading-[1.12] mb-6">
             Take Control
@@ -32,51 +43,69 @@ const Hero: React.FC<HeroProps> = ({ data = HERO_DATA }) => {
             {data.description}
           </p>
 
-          {/* Download Buttons - Perfect Big Size & Small Gap */}
-          <div className="flex flex-row items-center justify-start gap-1 mb-14 w-full max-w-md">
-            {/* Google Play Button */}
+          {/* Download Buttons - Custom Crafted, Left-Aligned, and Exact Same Size */}
+          <div className="flex flex-row items-center justify-start gap-3 mb-14 w-full">
+            {/* Custom Google Play Button */}
             <a
               href={data.playStoreUrl}
               target="_blank"
-               rel="noopener noreferrer"
-               className="relative w-[180px] h-[54px] sm:w-[210px] sm:h-[62px] md:w-[240px] md:h-[72px] transition-transform duration-200 hover:scale-[1.03] block shrink-0"
-             >
-               <Image
-                 src={data.playStoreBadge}
-                alt="Get it on Google Play"
-                fill
-                className="object-contain object-left"
-                sizes="(max-width: 768px) 150px, 180px"
-                priority
-              />
+              rel="noopener noreferrer"
+              className="flex items-center gap-2.5 w-[150px] h-[45px] sm:w-[160px] sm:h-[48px] px-3 bg-black border border-white rounded-lg hover:bg-neutral-900 transition-all duration-200 hover:scale-[1.03] select-none shrink-0"
+            >
+              {/* Logo Container */}
+              <div className="relative w-5 h-5 sm:w-6 sm:h-6 shrink-0">
+                <Image
+                  src={data.playStoreBadge}
+                  alt="Google Play"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+              <div className="flex flex-col items-start leading-none">
+                <span className="text-[8px] sm:text-[8px] text-white uppercase tracking-wider font-medium">
+                  Get it on
+                </span>
+                <span className="text-[12px] sm:text-[16px] text-white font-medium font-manrope mt-[2px]">
+                  Google Play
+                </span>
+              </div>
             </a>
 
-            {/* App Store Button */}
+            {/* Custom App Store Button */}
             <a
               href={data.appStoreUrl}
               target="_blank"
-               rel="noopener noreferrer"
-               className="relative w-[180px] h-[54px] sm:w-[210px] sm:h-[62px] md:w-[240px] md:h-[72px] transition-transform duration-200 hover:scale-[1.03] block shrink-0"
-             >
-               <Image
-                 src={data.appStoreBadge}
-                alt="Download on the App Store"
-                fill
-                className="object-contain object-left"
-                sizes="(max-width: 768px) 150px, 180px"
-                priority
-              />
+              rel="noopener noreferrer"
+              className="flex items-center gap-2.5 w-[150px] h-[45px] sm:w-[160px] sm:h-[48px] px-3 bg-black border border-white rounded-lg hover:bg-neutral-900 transition-all duration-200 hover:scale-[1.03] select-none shrink-0"
+            >
+              {/* Logo Container */}
+              <div className="relative w-5 h-5 sm:w-6 sm:h-6 shrink-0">
+                <Image
+                  src={data.appStoreBadge}
+                  alt="App Store"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+              <div className="flex flex-col items-start leading-none">
+                <span className="text-[8px] sm:text-[8px] text-white tracking-wider font-medium">
+                  Download on the
+                </span>
+                <span className="text-[12px] sm:text-[16px] text-white font-medium font-manrope mt-[2px]">
+                  App Store
+                </span>
+              </div>
             </a>
           </div>
 
           {/* Dynamic Stats Row */}
-          <div className="grid grid-cols-3 gap-30 max-w-lg font-manrope">
+          <div className="grid grid-cols-3 gap-6 md:gap-34 max-w-lg font-manrope w-full">
             {data.stats.map((stat, idx) => (
-              <div key={idx} className="flex flex-col gap-1">
-                <span className=" text-[#FFFFFF] text-[10px] uppercase font-normal tracking-wider">
+              <div key={idx} className="flex flex-col gap-1 items-start">
+                <span className="text-[#FFFFFF] text-[10px] uppercase font-normal tracking-wider">
                   {stat.label}
                 </span>
-                <span className="text-base md:text-[14px] font-semibold text-[#FFFFFF]">
+                <span className="text-base md:text-[14px] font-semibold text-[#FFFFFF] whitespace-nowrap">
                   {stat.value}
                 </span>
               </div>
@@ -88,7 +117,7 @@ const Hero: React.FC<HeroProps> = ({ data = HERO_DATA }) => {
         <div className="lg:col-span-6 relative w-full h-[400px] sm:h-[500px] md:h-[580px] lg:h-[700px] flex items-start justify-center lg:justify-end lg:-mt-10">
           {/* Custom Linear Gradient Glow - Shifted more right and up */}
           <div
-            className="absolute w-[350px] h-[350px] sm:w-[480px] sm:h-[480px] lg:w-[480px] lg:h-[380px] rounded-full blur-[130px] opacity-[0.55] pointer-events-none z-0 right-[-15%] top-[4%] sm:right-[-10%] lg:right-[-22%] lg:top-[3%]"
+            className="absolute w-[350px] h-[350px] sm:w-[480px] sm:h-[480px] lg:w-[480px] lg:h-[380px] rounded-full blur-[130px] opacity-[0.30] pointer-events-none z-0 right-[-15%] top-[4%] sm:right-[-10%] lg:right-[-22%] lg:top-[15%]"
             style={{
               background: "linear-gradient(135deg, #4FD1FF 0%, #6C63FE 100%)",
             }}
