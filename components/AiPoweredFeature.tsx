@@ -15,20 +15,23 @@ const data = {
 
 const AiPoweredFeature = () => {
   return (
-    <section className="relative w-full min-h-screen text-white py-16  px-6 md:px-16 lg:px-24 bg-transparent overflow-hidden flex items-center">
-      {/* Top Right Abstract Fluid Shape Asset */}
-      <div className="absolute -right-[10%] -top-[10%] sm:-right-[15%] sm:-top-[15%] lg:-right-[23%] lg:-top-[7%] w-[320px] h-[320px] sm:w-[450px] sm:h-[450px] lg:w-[550px] lg:h-[550px] pointer-events-none z-0 select-none opacity-90 mix-blend-screen">
+    <section className="relative w-full min-h-screen text-white py-16  px-6 md:px-16 lg:px-24 overflow-visible flex items-center">
+      {/* Gradient glow behind the fluid shape */}
+      <div className="hidden lg:block absolute lg:-right-[20%] lg:-top-[18%] w-[550px] h-[550px] rounded-full blur-3xl opacity-50 pointer-events-none select-none z-10 bg-[radial-gradient(circle_at_center,_rgba(56,189,248,0.55)_0%,_rgba(99,102,241,0.45)_35%,_rgba(236,72,153,0.35)_65%,_transparent_75%)]" />
+
+      {/* Top Right Abstract Fluid Shape Asset — large screens only, bleeds up into the section above */}
+      <div className="hidden lg:block absolute lg:-right-[20%] lg:-top-[13%] w-[550px] h-[550px] pointer-events-none select-none z-30 opacity-90 mix-blend-screen">
         <Image
           src="/assets/fluid.png"
           alt="Abstract Decorative Fluid"
-          width={347}
-          height={392}
+          width={420}
+          height={442}
           className="object-contain"
           priority
         />
       </div>
 
-      <div className="max-w-7xl mx-auto w-full relative z-10">
+      <div className="max-w-7xl mx-auto w-full relative z-20">
         {/* Header Title Section */}
         <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
           <h2 className="font-manrope text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight mb-4 leading-tight">
@@ -49,14 +52,19 @@ const AiPoweredFeature = () => {
           <div className="lg:col-span-5 flex flex-col gap-10 max-w-xl mx-auto lg:mx-0">
             {/* Feature 1: AI Receipt Scanner */}
             <div className="flex gap-4 items-start group">
-              <div className="mt-1 flex-shrink-0 w-10 h-10 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 group-hover:bg-cyan-500/20 transition-all duration-300">
-                <Scan size={20} className="stroke-[2]" />
+              <div className="mt-1 flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center text-cyan-400 group-hover:bg-cyan-500/20 transition-all duration-300">
+                <Image
+                  src="/assets/scanner.png"
+                  alt="Receipt Scanner"
+                  width={25}
+                  height={25}
+                />
               </div>
               <div className="flex flex-col">
-                <h3 className="font-manrope text-xl font-semibold mb-2 tracking-wide text-slate-200">
+                <h3 className="font-manrope text-xl font-medium  mb-2 tracking-wide text-white">
                   AI <span className="text-[#818CF8]">Receipt Scanner</span>
                 </h3>
-                <p className="font-lato text-slate-400 text-sm sm:text-[15px] leading-relaxed italic font-light">
+                <p className="font-lato text-white/90 text-sm sm:text-[15px] leading-relaxed italic font-light">
                   Capture paper receipts with your camera. AI instantly extracts
                   the merchant, amount, date, and category, turning them into
                   ready-to-save expense entries.
@@ -66,14 +74,19 @@ const AiPoweredFeature = () => {
 
             {/* Feature 2: Voice Expense Entry */}
             <div className="flex gap-4 items-start group">
-              <div className="mt-1 flex-shrink-0 w-10 h-10 rounded-lg bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 group-hover:bg-indigo-500/20 transition-all duration-300">
-                <Mic size={20} className="stroke-[2]" />
+              <div className=" flex-shrink-0 w-10 h-10 rounded-lg  flex items-center justify-center text-indigo-400 group-hover:bg-indigo-500/20 transition-all duration-300">
+                <Image
+                  src="/assets/voice.png"
+                  alt="Voice Entry"
+                  width={25}
+                  height={25}
+                />
               </div>
               <div className="flex flex-col">
-                <h3 className="font-manrope text-xl font-semibold mb-2 tracking-wide text-slate-200">
-                  Voice Expense <span className="text-[#818CF8]">Entry</span>
+                <h3 className="font-manrope text-xl font-medium mb-2 tracking-wide text-[#818CF8]">
+                  Voice Expense <span className="text-white">Entry</span>
                 </h3>
-                <p className="font-lato text-slate-400 text-sm sm:text-[15px] leading-relaxed italic font-light">
+                <p className="font-lato text-white/90 text-sm sm:text-[15px] leading-relaxed italic font-light">
                   Simply say, &quot;Spent Rs. 500 on groceries today.&quot; The
                   app understands your command, extracts the details, and
                   prepares the transaction for confirmation.
@@ -160,21 +173,36 @@ const AiPoweredFeature = () => {
           </div>
 
           {/* RIGHT SIDE: Dynamic Double Tilt Phone Mockups */}
-          <div className="lg:col-span-7 flex items-center justify-center relative mt-4 lg:mt-0">
-            {/* Phone Mockup (Voice Feature UI) — single container, consistent aspect ratio at every breakpoint */}
+          <div className="lg:col-span-7 flex items-center justify-center lg:justify-end relative mt-6 lg:mt-0">
             <div
-              className="relative w-full
-                max-w-[300px] sm:max-w-[440px] md:max-w-[600px] lg:max-w-[720px]
-                aspect-[850/670]
-                transition-all duration-500 hover:scale-[1.03] rotate-[-4deg]
-                drop-shadow-[0_25px_25px_rgba(0,0,0,0.5)]"
+              className="
+      relative
+      w-full
+      max-w-[380px]
+      sm:max-w-[520px]
+      md:max-w-[700px]
+      lg:max-w-[900px]
+      xl:max-w-[980px]
+      aspect-[900/700]
+      transition-all
+      duration-500
+      hover:scale-[1.03]
+      rotate-[-4deg]
+      lg:-translate-y-10
+      lg:translate-x-12
+      
+    "
             >
               <Image
-                src="/assets/phone-group.png"
+                src="/assets/phone-groups.png"
                 alt="Voice Entry Feature Showcase"
                 fill
+                priority
                 className="object-contain"
-                sizes="(max-width: 640px) 300px, (max-width: 768px) 440px, (max-width: 1024px) 600px, 720px"
+                sizes="(max-width:640px) 380px,
+             (max-width:768px) 520px,
+             (max-width:1024px) 700px,
+             980px"
               />
             </div>
           </div>

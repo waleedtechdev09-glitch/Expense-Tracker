@@ -7,7 +7,7 @@ const Pricing = () => {
   const [yearly, setYearly] = useState(true);
 
   return (
-    <section className="relative overflow-visible py-16 md:py-24">
+    <section className="relative overflow-visible py-16 md:py-24 ">
       {/* 
         Highlighted Fluid Background Image 
         Positioned absolutely relative to the section, keeping it BEHIND the cards (z-0)

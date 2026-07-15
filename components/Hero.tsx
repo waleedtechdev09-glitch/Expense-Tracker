@@ -33,17 +33,17 @@ const Hero: React.FC<HeroProps> = ({ data = HERO_DATA }) => {
           </p>
 
           {/* Download Buttons */}
-          <div className="flex justify-center sm:justify-start mb-8 items-center gap-3">
+          <div className="flex flex-nowrap justify-center sm:justify-start mb-8 items-center gap-2 sm:gap-3">
             {/* Google Play */}
             <Link
               href={data.playStoreUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="
-      flex items-center gap-2
-      w-[140px] sm:w-[155px] md:w-[170px]
+      flex items-center justify-center gap-2
+      w-[124px] sm:w-[155px] md:w-[170px]
       h-[44px] sm:h-[48px] md:h-[54px]
-      px-3
+      px-2.5 sm:px-3
       bg-black
       border border-white
       rounded-lg
@@ -53,7 +53,7 @@ const Hero: React.FC<HeroProps> = ({ data = HERO_DATA }) => {
       flex-shrink-0
     "
             >
-              <div className="relative w-5 h-5 md:w-6 md:h-6 shrink-0">
+              <div className="relative w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 shrink-0">
                 <Image
                   src={data.playStoreBadge}
                   alt="Google Play"
@@ -63,10 +63,10 @@ const Hero: React.FC<HeroProps> = ({ data = HERO_DATA }) => {
               </div>
 
               <div className="leading-none">
-                <p className="text-[8px] text-white uppercase tracking-wider">
+                <p className="text-[7px] sm:text-[8px] text-white uppercase tracking-wider">
                   Get it on
                 </p>
-                <p className="text-[12px] md:text-[16px] font-medium text-white">
+                <p className="text-[10px] sm:text-[12px] md:text-[16px] font-medium text-white">
                   Google Play
                 </p>
               </div>
@@ -78,10 +78,10 @@ const Hero: React.FC<HeroProps> = ({ data = HERO_DATA }) => {
               target="_blank"
               rel="noopener noreferrer"
               className="
-      flex items-center gap-2
-      w-[140px] sm:w-[155px] md:w-[170px]
+      flex items-center justify-center gap-2
+      w-[124px] sm:w-[155px] md:w-[170px]
       h-[44px] sm:h-[48px] md:h-[54px]
-      px-3
+      px-2.5 sm:px-3
       bg-black
       border border-white
       rounded-lg
@@ -91,7 +91,7 @@ const Hero: React.FC<HeroProps> = ({ data = HERO_DATA }) => {
       flex-shrink-0
     "
             >
-              <div className="relative w-5 h-5 md:w-6 md:h-6 shrink-0">
+              <div className="relative w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 shrink-0">
                 <Image
                   src={data.appStoreBadge}
                   alt="App Store"
@@ -101,10 +101,10 @@ const Hero: React.FC<HeroProps> = ({ data = HERO_DATA }) => {
               </div>
 
               <div className="leading-none">
-                <p className="text-[8px] text-white tracking-wider">
+                <p className="text-[7px] sm:text-[8px] text-white tracking-wider">
                   Download on the
                 </p>
-                <p className="text-[12px] md:text-[16px] font-medium text-white">
+                <p className="text-[10px] sm:text-[12px] md:text-[16px] font-medium text-white">
                   App Store
                 </p>
               </div>
