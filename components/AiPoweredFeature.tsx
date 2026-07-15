@@ -82,7 +82,7 @@ const AiPoweredFeature = () => {
             </div>
 
             {/* App Badges Container - Exactly as requested */}
-            <div className="flex flex-row flex-wrap items-center justify-start gap-2.5 sm:gap-3 mb-10 md:mb-14 w-full">
+            <div className="flex flex-row flex-wrap lg:px-14 items-center justify-start gap-2.5 sm:gap-3 mb-10 md:mb-14 w-full">
               {/* Google Play Button */}
               <Link
                 href={data.playStoreUrl}
@@ -160,15 +160,21 @@ const AiPoweredFeature = () => {
           </div>
 
           {/* RIGHT SIDE: Dynamic Double Tilt Phone Mockups */}
-          <div className="lg:col-span-7 flex items-center justify-center gap-4 sm:gap-8 relative md:pt-10 lg:pt-0">
-            {/* Left Phone Mockup (Voice Feature UI) */}
-            <div className="relative w-[160px] h-[330px] sm:w-[240px] sm:h-[490px] md:w-[650px] md:h-[513px] transition-all duration-500 hover:scale-[1.03] rotate-[-4deg] drop-shadow-[0_25px_25px_rgba(0,0,0,0.5)]">
+          <div className="lg:col-span-7 flex items-center justify-center relative mt-4 lg:mt-0">
+            {/* Phone Mockup (Voice Feature UI) — single container, consistent aspect ratio at every breakpoint */}
+            <div
+              className="relative w-full
+                max-w-[300px] sm:max-w-[440px] md:max-w-[600px] lg:max-w-[720px]
+                aspect-[850/670]
+                transition-all duration-500 hover:scale-[1.03] rotate-[-4deg]
+                drop-shadow-[0_25px_25px_rgba(0,0,0,0.5)]"
+            >
               <Image
                 src="/assets/phone-group.png"
                 alt="Voice Entry Feature Showcase"
                 fill
                 className="object-contain"
-                sizes="(max-width: 640px) 160px, (max-width: 768px) 240px, 850px"
+                sizes="(max-width: 640px) 300px, (max-width: 768px) 440px, (max-width: 1024px) 600px, 720px"
               />
             </div>
           </div>
