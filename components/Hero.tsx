@@ -14,7 +14,7 @@ const Hero: React.FC<HeroProps> = ({ data = HERO_DATA }) => {
     // bg-transparent rakha hai taake parent ki image background me saaf nazar aaye
     <section className="relative w-full text-white flex items-center pt-10 sm:pt-16 md:pt-20 pb-10 px-5 sm:px-6 md:px-12 lg:px-24 bg-transparent">
       {/* Background global radial glow */}
-      <div className="absolute right-[-10%] top-[20%] w-[600px] h-[600px] bg-blue-900/15 rounded-full blur-[150px] pointer-events-none z-0" />
+      <div className="absolute right-[-5%] top-[20%] w-[600px] h-[600px] bg-blue-900/15 rounded-full blur-[150px] pointer-events-none z-0" />
 
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-4 items-center relative z-10">
         {/* Left Side: Content & Stats */}
@@ -132,7 +132,7 @@ const Hero: React.FC<HeroProps> = ({ data = HERO_DATA }) => {
         {/* Right Side Mocks */}
         <div className="lg:col-span-6 relative w-full h-[320px] sm:h-[420px] md:h-[580px] lg:h-[650px] flex items-start justify-center lg:justify-end">
           <div
-            className="absolute w-[350px] h-[350px] sm:w-[480px] sm:h-[480px] lg:w-[480px] lg:h-[380px] rounded-full blur-[130px] opacity-[0.30] pointer-events-none z-0 right-[-15%] top-[4%] sm:right-[-10%] lg:right-[-22%] lg:top-[15%]"
+            className="absolute w-[350px] h-[350px] sm:w-[480px] sm:h-[480px] lg:w-[480px] lg:h-[380px] rounded-full blur-[130px] opacity-[0.30] pointer-events-none z-0 right-[-5%] top-[4%] sm:right-[-3%] lg:right-[-22%] lg:top-[15%]"
             style={{
               background: "linear-gradient(135deg, #4FD1FF 0%, #6C63FE 100%)",
             }}

@@ -56,7 +56,7 @@ const PowerfulFeature = () => {
       className="relative w-full min-h-screen text-white pb-16 md:pb-10 pt-8  px-6 md:px-16 lg:px-24 "
     >
       {/* 3D Sphere Orb Asset */}
-      <div className="absolute left-[-155px] sm:left-[-120px] lg:left-[-160px] -top-[8%] sm:-top-[15%] md:-top-[10%] md:left-[-35%] lg:-top-[20%] w-[240px] h-[240px] sm:w-[380px] sm:h-[380px] lg:w-[500px] lg:h-[500px] pointer-events-none z-20">
+      <div className="hidden lg:block absolute left-[-40px] sm:left-[-30px] lg:left-[-180px] -top-[8%] sm:-top-[15%] md:-top-[10%] md:left-[-10%] lg:-top-[20%] w-[240px] h-[240px] sm:w-[380px] sm:h-[380px] lg:w-[500px] lg:h-[500px] pointer-events-none z-20">
         {/* Radial Glow */}
         <div
           className="
@@ -276,7 +276,7 @@ const PowerfulFeature = () => {
             </div>
 
             {/* Mobile Device Mockup Frame */}
-            <div className="relative w-[260px] h-[530px] sm:w-[310px] sm:h-[630px] transition-transform duration-500 ease-out hover:scale-[1.01] z-10">
+            <div className="relative w-[260px] h-[530px] sm:w-[310px] sm:h-[630px] transition-transform duration-500 ease-out hover:scale-[1.01] z-10 hidden lg:flex">
               <Image
                 src="/assets/phone.png"
                 alt="Expense Tracker App UI"

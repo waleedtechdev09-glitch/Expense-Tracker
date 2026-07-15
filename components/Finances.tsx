@@ -92,9 +92,9 @@ const Finances = () => {
       {/* Glow gradient behind the decorative image */}
       <div
         className="pointer-events-none absolute
-          -bottom-6 -right-6
-          sm:-bottom-8 sm:-right-8
-          md:-bottom-10 md:-right-12
+          -bottom-6 -right-4
+          sm:-bottom-8 sm:-right-4
+          md:-bottom-10 md:-right-6
           lg:-bottom-10 lg:-right-25
           z-10
           w-[140px] h-[140px]
@@ -108,9 +108,9 @@ const Finances = () => {
       {/* Decorative bottom-right image — sibling of the card, so overflow-hidden doesn't clip it */}
       <div
         className="pointer-events-none absolute
-          -bottom-6 -right-14
-          sm:-bottom-8 sm:-right-14
-          md:-bottom-10 md:-right-12
+          -bottom-6 -right-10
+          sm:-bottom-8 sm:-right-8
+          md:-bottom-10 md:-right-6
           lg:-bottom-10 lg:-right-25
           z-20
           w-[180px] h-[180px]
