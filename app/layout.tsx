@@ -80,7 +80,7 @@ export default function RootLayout({
         <Navbar />
 
         {/* Main Content (Hero & Powerful Feature will render here with transparent backgrounds) */}
-        <main className="flex-grow relative z-10">{children}</main>
+        <main className="grow relative z-10">{children}</main>
         <Footer />
       </body>
     </html>

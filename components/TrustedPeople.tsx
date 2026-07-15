@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { Star } from "lucide-react";
 
@@ -42,14 +43,11 @@ const testimonials = [
 
 const TrustedPeople = () => {
   return (
-    <section className="relative overflow-hidden  py-10">
-      {/* Decorative Blur */}
-      {/* <div className="absolute -top-24 -left-24 w-72 h-72 rounded-full bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-400 blur-2xl opacity-60"></div> */}
-
+    <section className="relative overflow-hidden md:py-20 py-10">
       <div className="relative max-w-7xl mx-auto px-5">
         {/* Heading */}
         <div className="text-center mb-14">
-          <h2 className="text-3xl md:text-5xl font-bold text-white leading-tight">
+          <h2 className="text-2xl md:text-5xl font-bold text-white leading-tight">
             <span className="text-cyan-400">Trusted by People</span> Who Value
             Every Rupee
           </h2>
@@ -60,12 +58,15 @@ const TrustedPeople = () => {
           </p>
         </div>
 
-        {/* Cards */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6">
+        <div
+          className="grid grid-cols-1 items-start md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6
+            lg:[mask-image:linear-gradient(to_bottom,black_0%,black_55%,transparent_100%)]
+            lg:[-webkit-mask-image:linear-gradient(to_bottom,black_0%,black_55%,transparent_100%)]"
+        >
           {testimonials.map((item, index) => (
             <div
               key={index}
-              className="rounded-3xl border border-white/10 bg-white/[0.03] backdrop-blur-sm p-7 transition duration-300 hover:border-cyan-400/30 hover:-translate-y-1"
+              className="rounded-3xl border border-white/10 bg-white/[0.03] backdrop-blur-sm p-7 transition duration-300 hover:border-cyan-400/30 "
             >
               {/* Stars */}
               <div className="flex gap-1 mb-5">
@@ -80,17 +81,19 @@ const TrustedPeople = () => {
               </div>
 
               {/* Review */}
-              <p className="text-gray-200 leading-8 text-[16px]">
+              <p className="text-gray-200 font-lato font-medium leading-8 text-[16px]">
                 {item.review}
               </p>
 
               {/* User */}
               <div className="mt-8">
-                <h4 className="text-white font-semibold text-lg">
+                <h4 className="text-white font-manrope font-semibold text-lg">
                   {item.name}
                 </h4>
 
-                <p className="text-gray-400 mt-1">{item.platform}</p>
+                <p className="text-gray-400 font-lato font-normal mt-1">
+                  {item.platform}
+                </p>
               </div>
             </div>
           ))}

@@ -53,16 +53,30 @@ const PowerfulFeature = () => {
   return (
     <section
       id="features"
-      className="relative w-full min-h-screen text-white pb-16 md:pb-10 pt-8  px-6 md:px-16 lg:px-24 bg-transparent "
+      className="relative w-full min-h-screen text-white pb-16 md:pb-10 pt-8  px-6 md:px-16 lg:px-24 "
     >
       {/* 3D Sphere Orb Asset */}
-      <div className="absolute left-[-155px] sm:left-[-120px] lg:left-[-160px] -top-[8%] sm:-top-[15%] md:-top-[10%] md:left-[-35%] lg:-top-[20%] w-[240px] h-[240px] sm:w-[380px] sm:h-[380px] lg:w-[500px] lg:h-[500px] pointer-events-none z-20 select-none opacity-90">
+      <div className="absolute left-[-155px] sm:left-[-120px] lg:left-[-160px] -top-[8%] sm:-top-[15%] md:-top-[10%] md:left-[-35%] lg:-top-[20%] w-[240px] h-[240px] sm:w-[380px] sm:h-[380px] lg:w-[500px] lg:h-[500px] pointer-events-none z-20">
+        {/* Radial Glow */}
+        <div
+          className="
+      absolute
+      inset-0
+      scale-[1.4]
+      rounded-full
+      bg-[radial-gradient(circle_at_center,rgba(98,184,255,0.35)_0%,rgba(66,133,244,0.25)_30%,rgba(21,52,108,0.12)_60%,transparent_100%)]
+      blur-[60px]
+      -z-10
+    "
+        />
+
+        {/* 3D Shape */}
         <Image
           src="/assets/3d-shape.png"
-          alt="Decorative 3D Sphere"
+          alt="3D Shape"
           fill
-          className="object-contain"
           priority
+          className="object-contain relative z-10"
         />
       </div>
 
@@ -105,7 +119,7 @@ const PowerfulFeature = () => {
           </div>
 
           {/* CENTER MOBILE MOCKUP + THE PERFECTED SVG LINES */}
-          <div className="lg:col-span-4 flex justify-center relative order-1 lg:order-2 my-4 lg:my-0">
+          <div className="lg:col-span-4 flex justify-center relative order-1 lg:order-2  lg:my-0">
             {/* SVG Connector Lines - Desktop Only */}
             <div className="hidden lg:block absolute inset-0 -mx-16 w-[calc(100%+128px)] h-full pointer-events-none z-0">
               <svg
@@ -274,7 +288,6 @@ const PowerfulFeature = () => {
           </div>
 
           {/* RIGHT SIDE FEATURES */}
-          {/* Mobile par elements tight clean display honge, desktop par matching height space dynamic ho jayegi */}
           <div className="lg:col-span-4 flex flex-col gap-8 lg:gap-0 lg:justify-around lg:h-[65%] lg:py-4 order-3 lg:items-start text-left">
             {FEATURES_DATA.filter((item) => item.side === "right").map(
               (feat) => (

@@ -12,11 +12,11 @@ interface HeroProps {
 const Hero: React.FC<HeroProps> = ({ data = HERO_DATA }) => {
   return (
     // bg-transparent rakha hai taake parent ki image background me saaf nazar aaye
-    <section className="relative w-full text-white flex items-center pt-6 px-5 sm:pt-20 sm:pb-12 sm:px-6 md:px-16 lg:px-24 bg-transparent">
+    <section className="relative w-full text-white flex items-center pt-10 sm:pt-16 md:pt-20 pb-10 px-5 sm:px-6 md:px-12 lg:px-24 bg-transparent">
       {/* Background global radial glow */}
       <div className="absolute right-[-10%] top-[20%] w-[600px] h-[600px] bg-blue-900/15 rounded-full blur-[150px] pointer-events-none z-0" />
 
-      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-4 items-center relative z-10">
+      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-4 items-center relative z-10">
         {/* Left Side: Content & Stats */}
         <div className="lg:col-span-6 flex flex-col justify-center items-start text-left">
           <h1 className="font-manrope text-4xl sm:text-5xl md:text-6xl lg:text-[68px] font-medium tracking-tight leading-[1.12] mb-6">
@@ -137,7 +137,7 @@ const Hero: React.FC<HeroProps> = ({ data = HERO_DATA }) => {
               background: "linear-gradient(135deg, #4FD1FF 0%, #6C63FE 100%)",
             }}
           />
-          <div className="relative w-full h-full -mt-2 md:-mt-0 max-w-[550px] lg:max-w-none lg:w-[115%] lg:h-[115%] transition-transform duration-500 ease-out hover:scale-[1.01] z-10">
+          <div className="relative w-full h-full max-w-[550px] lg:max-w-none lg:w-[115%] lg:h-[115%] transition-transform duration-500 ease-out hover:scale-[1.01] z-10">
             <Image
               src={data.heroImage}
               alt="Expense Tracker Mobile Experience"
