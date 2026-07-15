@@ -1,0 +1,103 @@
+import React from "react";
+import { Star } from "lucide-react";
+
+const testimonials = [
+  {
+    name: "Jessica John",
+    platform: "iOS App Store",
+    review:
+      "The easiest expense tracker I've ever used. The AI receipt scanner saves me so much time, and the budgeting tools help me stay on track every month. Everything feels simple and intuitive.",
+  },
+  {
+    name: "Clément",
+    platform: "Google Play Store",
+    review:
+      "The interface feels polished, the performance is smooth, and the insights help me make better financial decisions every month.",
+  },
+  {
+    name: "FortierP",
+    platform: "Google Play Store",
+    review:
+      "Smart, secure, and beautifully designed. The insights and spending reports have completely changed the way I manage my money. Highly recommended for anyone serious about budgeting.",
+  },
+  {
+    name: "Jessica John",
+    platform: "iOS App Store",
+    review:
+      "I love how it combines budgeting, bill reminders, multiple accounts, and AI automation in one beautifully designed app. It keeps my finances organized without any hassle.",
+  },
+  {
+    name: "Jessica John",
+    platform: "iOS App Store",
+    review:
+      "I can record expenses using my voice while driving or shopping. The app is fast, accurate, and works even when I'm offline.",
+  },
+  {
+    name: "Jessica John",
+    platform: "iOS App Store",
+    review:
+      "The interface is modern, clean, and intuitive. I was able to start tracking my finances within minutes.",
+  },
+];
+
+const TrustedPeople = () => {
+  return (
+    <section className="relative overflow-hidden  py-10">
+      {/* Decorative Blur */}
+      {/* <div className="absolute -top-24 -left-24 w-72 h-72 rounded-full bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-400 blur-2xl opacity-60"></div> */}
+
+      <div className="relative max-w-7xl mx-auto px-5">
+        {/* Heading */}
+        <div className="text-center mb-14">
+          <h2 className="text-3xl md:text-5xl font-bold text-white leading-tight">
+            <span className="text-cyan-400">Trusted by People</span> Who Value
+            Every Rupee
+          </h2>
+
+          <p className="text-gray-300 mt-5 text-base md:text-xl max-w-3xl mx-auto">
+            Built to make everyday money management simpler, faster, and more
+            intuitive.
+          </p>
+        </div>
+
+        {/* Cards */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6">
+          {testimonials.map((item, index) => (
+            <div
+              key={index}
+              className="rounded-3xl border border-white/10 bg-white/[0.03] backdrop-blur-sm p-7 transition duration-300 hover:border-cyan-400/30 hover:-translate-y-1"
+            >
+              {/* Stars */}
+              <div className="flex gap-1 mb-5">
+                {[...Array(5)].map((_, i) => (
+                  <Star
+                    key={i}
+                    size={18}
+                    fill="#FFC107"
+                    className="text-yellow-400"
+                  />
+                ))}
+              </div>
+
+              {/* Review */}
+              <p className="text-gray-200 leading-8 text-[16px]">
+                {item.review}
+              </p>
+
+              {/* User */}
+              <div className="mt-8">
+                <h4 className="text-white font-semibold text-lg">
+                  {item.name}
+                </h4>
+
+                <p className="text-gray-400 mt-1">{item.platform}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default TrustedPeople;

@@ -27,8 +27,8 @@ const STATS_DATA = [
 
 const Rating = () => {
   return (
-    <section className="w-full bg-transparent py-10 px-6 sm:px-16 lg:px-24 flex justify-center items-center">
-      <div className="relative w-full max-w-7xl overflow-hidden rounded-2xl md:rounded-3xl border border-white/[0.08] bg-gradient-to-br from-[#132C55] via-[#132C55] to-[#132C55] p-6 md:p-10 lg:py-12 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]">
+    <section className="w-full bg-transparent md:py-10 py-0  px-6 sm:px-16 lg:px-24 flex justify-center items-center">
+      <div className="relative w-full max-w-7xl overflow-hidden rounded-2xl md:rounded-3xl border border-white/[0.08] bg-white/10 p-6 md:p-10 lg:py-12">
         <div className="relative z-10 grid grid-cols-2 md:grid-cols-4 gap-y-10 md:gap-y-0 items-center text-center">
           {STATS_DATA.map((stat, index) => (
             <div
@@ -40,13 +40,13 @@ const Rating = () => {
                   : ""
               } ${
                 // Desktop dynamic borders: Add left border starting from second column
-                index > 0 ? "md:border-l md:border-white/[0.08]" : ""
+                index > 0 ? "md:border-l md:border-white/20" : ""
               }`}
             >
-              <h3 className="font-manrope text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white mb-2">
+              <h3 className="font-manrope text-2xl sm:text-3xl md:text-4xl font-medium tracking-tight text-white mb-2">
                 {stat.value}
               </h3>
-              <p className="font-lato text-xs sm:text-sm text-slate-300 font-light tracking-wide">
+              <p className="font-lato  text-xs sm:text-sm text-slate-300 font-normal tracking-wide">
                 {stat.label}
               </p>
             </div>

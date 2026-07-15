@@ -12,11 +12,11 @@ interface HeroProps {
 const Hero: React.FC<HeroProps> = ({ data = HERO_DATA }) => {
   return (
     // bg-transparent rakha hai taake parent ki image background me saaf nazar aaye
-    <section className="relative w-full text-white flex items-center pt-16 pb-10 px-5 sm:pt-20 sm:pb-12 sm:px-6 md:px-16 lg:px-24 bg-transparent">
+    <section className="relative w-full text-white flex items-center pt-6 px-5 sm:pt-20 sm:pb-12 sm:px-6 md:px-16 lg:px-24 bg-transparent">
       {/* Background global radial glow */}
       <div className="absolute right-[-10%] top-[20%] w-[600px] h-[600px] bg-blue-900/15 rounded-full blur-[150px] pointer-events-none z-0" />
 
-      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-4 items-center relative z-10">
+      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-4 items-center relative z-10">
         {/* Left Side: Content & Stats */}
         <div className="lg:col-span-6 flex flex-col justify-center items-start text-left">
           <h1 className="font-manrope text-4xl sm:text-5xl md:text-6xl lg:text-[68px] font-medium tracking-tight leading-[1.12] mb-6">
@@ -32,25 +32,28 @@ const Hero: React.FC<HeroProps> = ({ data = HERO_DATA }) => {
             {data.description}
           </p>
 
-          <div className="flex flex-row flex-wrap items-center justify-start gap-2.5 sm:gap-3 mb-10 md:mb-14 w-full">
+          {/* Download Buttons */}
+          <div className="flex justify-center sm:justify-start mb-8 items-center gap-3">
+            {/* Google Play */}
             <Link
               href={data.playStoreUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2.5
-    w-full max-w-[160px]
-    sm:w-[150px] md:w-[160px]
-    h-[48px]
-    px-3
-    bg-black
-    border border-white
-    rounded-lg
-    hover:bg-neutral-900
-    transition-all duration-200
-    hover:scale-[1.03]
-    select-none"
+              className="
+      flex items-center gap-2
+      w-[140px] sm:w-[155px] md:w-[170px]
+      h-[44px] sm:h-[48px] md:h-[54px]
+      px-3
+      bg-black
+      border border-white
+      rounded-lg
+      hover:bg-neutral-900
+      transition-all duration-200
+      hover:scale-[1.03]
+      flex-shrink-0
+    "
             >
-              <div className="relative w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 shrink-0">
+              <div className="relative w-5 h-5 md:w-6 md:h-6 shrink-0">
                 <Image
                   src={data.playStoreBadge}
                   alt="Google Play"
@@ -59,34 +62,36 @@ const Hero: React.FC<HeroProps> = ({ data = HERO_DATA }) => {
                 />
               </div>
 
-              <div className="flex flex-col items-start leading-none">
-                <span className="text-[7px] sm:text-[8px] uppercase tracking-wider font-medium text-white">
+              <div className="leading-none">
+                <p className="text-[8px] text-white uppercase tracking-wider">
                   Get it on
-                </span>
-                <span className="text-[11px] sm:text-[12px] md:text-[16px] font-medium font-manrope text-white mt-[2px]">
+                </p>
+                <p className="text-[12px] md:text-[16px] font-medium text-white">
                   Google Play
-                </span>
+                </p>
               </div>
             </Link>
 
+            {/* App Store */}
             <Link
               href={data.appStoreUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2.5
-    w-full max-w-[160px]
-    sm:w-[150px] md:w-[160px]
-    h-[48px]
-    px-3
-    bg-black
-    border border-white
-    rounded-lg
-    hover:bg-neutral-900
-    transition-all duration-200
-    hover:scale-[1.03]
-    select-none"
+              className="
+      flex items-center gap-2
+      w-[140px] sm:w-[155px] md:w-[170px]
+      h-[44px] sm:h-[48px] md:h-[54px]
+      px-3
+      bg-black
+      border border-white
+      rounded-lg
+      hover:bg-neutral-900
+      transition-all duration-200
+      hover:scale-[1.03]
+      flex-shrink-0
+    "
             >
-              <div className="relative w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 shrink-0">
+              <div className="relative w-5 h-5 md:w-6 md:h-6 shrink-0">
                 <Image
                   src={data.appStoreBadge}
                   alt="App Store"
@@ -95,29 +100,28 @@ const Hero: React.FC<HeroProps> = ({ data = HERO_DATA }) => {
                 />
               </div>
 
-              <div className="flex flex-col items-start leading-none">
-                <span className="text-[7px] sm:text-[8px] tracking-wider font-medium text-white">
+              <div className="leading-none">
+                <p className="text-[8px] text-white tracking-wider">
                   Download on the
-                </span>
-                <span className="text-[11px] sm:text-[12px] md:text-[16px] font-medium font-manrope text-white mt-[2px]">
+                </p>
+                <p className="text-[12px] md:text-[16px] font-medium text-white">
                   App Store
-                </span>
+                </p>
               </div>
             </Link>
           </div>
-          {/* Download Buttons */}
 
-          {/* Dynamic Stats Row */}
-          <div className="grid grid-cols-3 gap-3 sm:gap-6 md:gap-10 lg:gap-16 max-w-lg font-manrope w-full">
+          <div className="grid grid-cols-3 gap-2 sm:gap-5 md:gap-8 w-full">
             {data.stats.map((stat, idx) => (
               <div
                 key={idx}
-                className="flex flex-col gap-1 items-start min-w-0"
+                className="flex flex-col items-center sm:items-start text-center sm:text-left"
               >
-                <span className="text-[#FFFFFF] text-[8px] sm:text-[9px] uppercase font-normal tracking-wider">
+                <span className="text-[8px] sm:text-[10px] uppercase text-white/70">
                   {stat.label}
                 </span>
-                <span className="text-[10px] sm:text-sm md:text-[12px] font-bold text-[#FFFFFF] leading-snug">
+
+                <span className="text-[11px] sm:text-base font-bold text-white break-words">
                   {stat.value}
                 </span>
               </div>
@@ -133,7 +137,7 @@ const Hero: React.FC<HeroProps> = ({ data = HERO_DATA }) => {
               background: "linear-gradient(135deg, #4FD1FF 0%, #6C63FE 100%)",
             }}
           />
-          <div className="relative w-full h-full max-w-[550px] lg:max-w-none lg:w-[115%] lg:h-[115%] transition-transform duration-500 ease-out hover:scale-[1.01] z-10">
+          <div className="relative w-full h-full -mt-2 md:-mt-0 max-w-[550px] lg:max-w-none lg:w-[115%] lg:h-[115%] transition-transform duration-500 ease-out hover:scale-[1.01] z-10">
             <Image
               src={data.heroImage}
               alt="Expense Tracker Mobile Experience"

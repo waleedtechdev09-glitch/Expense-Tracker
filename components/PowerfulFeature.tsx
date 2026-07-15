@@ -53,10 +53,10 @@ const PowerfulFeature = () => {
   return (
     <section
       id="features"
-      className="relative w-full min-h-screen text-white pb-16 md:pb-24 pt-8 md:pt-12 px-6 md:px-16 lg:px-24 bg-transparent font-sans"
+      className="relative w-full min-h-screen text-white pb-16 md:pb-10 pt-8  px-6 md:px-16 lg:px-24 bg-transparent "
     >
       {/* 3D Sphere Orb Asset */}
-      <div className="absolute left-[-175px] sm:left-[-120px] lg:left-[-160px] -top-[4%] sm:-top-[15%] md:-top-[8%] md:left-[-30%] lg:-top-[15%] w-[240px] h-[240px] sm:w-[380px] sm:h-[380px] lg:w-[500px] lg:h-[500px] pointer-events-none z-20 select-none opacity-90">
+      <div className="absolute left-[-155px] sm:left-[-120px] lg:left-[-160px] -top-[8%] sm:-top-[15%] md:-top-[10%] md:left-[-35%] lg:-top-[20%] w-[240px] h-[240px] sm:w-[380px] sm:h-[380px] lg:w-[500px] lg:h-[500px] pointer-events-none z-20 select-none opacity-90">
         <Image
           src="/assets/3d-shape.png"
           alt="Decorative 3D Sphere"
@@ -69,7 +69,7 @@ const PowerfulFeature = () => {
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header Section */}
         <div className="text-center max-w-3xl mx-auto mb-10 md:mb-20">
-          <h2 className="font-manrope text-3xl font-manrope sm:text-4xl md:text-4xl font-semibold tracking-tight mb-3 leading-tight">
+          <h2 className="font-manrope text-3xl font-manrope sm:text-4xl md:text-4xl font-extra-bold tracking-tight mb-3 leading-tight">
             Powerful{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400 font-semibold">
               Features
@@ -295,13 +295,13 @@ const PowerfulFeature = () => {
         </div>
 
         {/* Bottom CTA Buttons Section */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-12 md:mt-20 w-full relative z-30">
-          <button className="flex items-center justify-center gap-2 px-8 h-12 rounded-full bg-white text-[#081B3A] text-sm font-semibold hover:bg-slate-100 transition-all duration-300 hover:scale-105 shadow-lg w-full sm:w-auto">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8 md:mt-10 w-full relative z-30">
+          <button className="flex items-center justify-center gap-2 px-8 h-12 rounded-full cursor-pointer bg-white text-[#081B3A] text-sm font-medium font-lato hover:bg-slate-100 transition-all duration-300 hover:scale-105 shadow-lg w-full sm:w-auto">
             <span>Download App</span>
             <Download size={15} strokeWidth={2.5} />
           </button>
 
-          <button className="flex items-center justify-center gap-2 px-8 h-12 rounded-full bg-[#6C63FF] text-white text-sm font-semibold hover:bg-[#5B54E8] transition-all duration-300 hover:scale-105 shadow-lg w-full sm:w-auto">
+          <button className="flex items-center justify-center gap-2 px-8 h-12 rounded-full bg-[#6C63FF] cursor-pointer text-white text-sm font-medium font-lato hover:bg-[#5B54E8] transition-all duration-300 hover:scale-105 shadow-lg w-full sm:w-auto">
             <span>Watch Demo</span>
             <Play size={13} fill="currentColor" strokeWidth={0} />
           </button>

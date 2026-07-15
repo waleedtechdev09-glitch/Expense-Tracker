@@ -1,7 +1,88 @@
 import React from "react";
+import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
-  return <div>Footer</div>;
+  const links = [
+    "Features",
+    "Pricing",
+    "Reviews",
+    "Contact",
+    "FAQs",
+    "Privacy Policy",
+    "Term & Condition",
+  ];
+
+  return (
+    <footer className="bg-[#071B3B] border-t border-white/10 text-white">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12">
+        {/* Logo */}
+        <div className="flex flex-col items-center text-center">
+          <div className="flex items-center gap-2">
+            <div className="w-11 h-11 rounded-full bg-cyan-500/10 border border-cyan-400/30 flex items-center justify-center">
+              <img
+                src="/assets/logo.png"
+                alt="Logo"
+                className="w-7 h-7 object-contain"
+              />
+            </div>
+
+            <span className="text-sm md:text-base font-medium">
+              Expense Tracker
+            </span>
+          </div>
+
+          <p className="text-gray-300 text-sm mt-5 max-w-xl leading-relaxed">
+            AI-powered expense management designed to simplify your finances.
+          </p>
+        </div>
+
+        {/* Navigation */}
+        <div className="mt-10 flex flex-wrap justify-center gap-x-10 gap-y-5 text-sm">
+          {links.map((item) => (
+            <a
+              key={item}
+              href="#"
+              className="text-gray-300 hover:text-white transition duration-300"
+            >
+              {item}
+            </a>
+          ))}
+        </div>
+
+        {/* Social Icons */}
+        <div className="mt-8 flex justify-center gap-6">
+          <a
+            href="#"
+            className="text-gray-300 hover:text-white transition text-lg"
+          >
+            <FaFacebookF />
+          </a>
+
+          <a
+            href="#"
+            className="text-gray-300 hover:text-white transition text-lg"
+          >
+            <FaTwitter />
+          </a>
+
+          <a
+            href="#"
+            className="text-gray-300 hover:text-white transition text-lg"
+          >
+            <FaInstagram />
+          </a>
+        </div>
+
+        {/* Divider */}
+        <div className="mt-10 border-t border-white/10"></div>
+
+        {/* Copyright */}
+        <p className="text-center text-xs text-gray-400 mt-6">
+          © 2026 Smart Expense Tracker. All rights reserved.
+        </p>
+      </div>
+    </footer>
+  );
 };
 
 export default Footer;

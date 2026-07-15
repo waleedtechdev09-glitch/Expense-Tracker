@@ -37,6 +37,7 @@ import Image from "next/image";
 import { Manrope, Lato } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import "@/app/globals.css";
+import Footer from "@/components/Footer";
 
 // Load Manrope for Titles/Headings
 const manrope = Manrope({
@@ -80,6 +81,7 @@ export default function RootLayout({
 
         {/* Main Content (Hero & Powerful Feature will render here with transparent backgrounds) */}
         <main className="flex-grow relative z-10">{children}</main>
+        <Footer />
       </body>
     </html>
   );

@@ -3,6 +3,9 @@ import Hero from "../components/Hero";
 import PowerfulFeature from "@/components/PowerfulFeature";
 import AiPoweredFeature from "@/components/AiPoweredFeature";
 import Rating from "@/components/Rating";
+import FAQs from "@/components/FAQs";
+import TrustedPeople from "@/components/TrustedPeople";
+import Pricing from "@/components/Pricing";
 
 const Home = () => {
   return (
@@ -11,6 +14,9 @@ const Home = () => {
       <PowerfulFeature />
       <Rating />
       <AiPoweredFeature />
+      <Pricing />
+      <TrustedPeople />
+      <FAQs />
     </div>
   );
 };

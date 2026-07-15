@@ -5,6 +5,7 @@ import Image from "next/image";
 import { NavItem, NAV_ITEMS, BRAND_INFO } from "../config/navigation";
 import Button from "./Button";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 interface NavbarProps {
   brandName?: string;
@@ -136,7 +137,9 @@ const Navbar: React.FC<NavbarProps> = ({
     active:scale-95
   "
           >
-            <span>Contact us</span>
+            <span>
+              <Link href="/contact-us">Contact us</Link>
+            </span>
             <ArrowRight size={12} strokeWidth={2.5} />
           </button>
         </div>
