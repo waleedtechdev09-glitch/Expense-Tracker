@@ -1,6 +1,6 @@
 import React from "react";
 import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
-
+import Link from "next/link";
 const Footer = () => {
   const links = [
     "Features",
@@ -31,7 +31,7 @@ const Footer = () => {
             </span>
           </div>
 
-          <p className="text-gray-300 text-sm mt-5 max-w-xl leading-relaxed">
+          <p className="text-white/90 font-lato font-normal text-sm mt-5 max-w-xl leading-relaxed">
             AI-powered expense management designed to simplify your finances.
           </p>
         </div>
@@ -39,13 +39,13 @@ const Footer = () => {
         {/* Navigation */}
         <div className="mt-10 flex flex-wrap justify-center gap-x-10 gap-y-5 text-sm">
           {links.map((item) => (
-            <a
+            <Link
               key={item}
               href="#"
-              className="text-gray-300 hover:text-white transition duration-300"
+              className="text-white hover:text-gray-300 transition duration-300"
             >
               {item}
-            </a>
+            </Link>
           ))}
         </div>
 

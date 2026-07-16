@@ -13,7 +13,7 @@ const data = {
 
 const Finances = () => {
   return (
-    <section className="relative w-full py-10 sm:py-14 md:py-20 px-5 sm:px-8 md:px-12 lg:px-20">
+    <section className="relative w-full py-4 sm:py-14 md:py-20 px-5 sm:px-8 md:px-12 lg:px-20">
       <div
         className="relative w-full mx-auto rounded-3xl overflow-hidden
           bg-white/10
@@ -24,7 +24,7 @@ const Finances = () => {
       >
         {/* Content */}
         <div className="relative z-10 max-w-2xl mx-auto">
-          <h2 className="font-manrope text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-bold text-white leading-tight text-center">
+          <h2 className="font-manrope text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-medium text-white leading-tight text-center">
             Ready to Take Control of Your{" "}
             <span className="text-cyan-400">Finances</span>?
           </h2>

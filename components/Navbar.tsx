@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { NavItem, NAV_ITEMS, BRAND_INFO } from "../config/navigation";
 import Button from "./Button";
@@ -23,8 +23,9 @@ const Navbar: React.FC<NavbarProps> = ({
   const [imageError, setImageError] = useState(false);
   const [activeTab, setActiveTab] = useState("");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const navRef = useRef<HTMLElement>(null);
 
-  // Scroll Spy
   useEffect(() => {
     const targets = navItems
       .map((item) => document.querySelector(item.href))
@@ -53,13 +54,36 @@ const Navbar: React.FC<NavbarProps> = ({
     };
   }, [navItems]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (navRef.current) {
+        const offset = navRef.current.getBoundingClientRect().top;
+        setIsScrolled(offset <= 0);
+      }
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     setMobileMenuOpen(false);
   };
 
+  const navBgClass = isScrolled
+    ? "fixed top-0 left-0 right-0 z-50 bg-[#081B3A]/90 backdrop-blur-md shadow-lg"
+    : "sticky top-0 z-50 bg-transparent";
+
   return (
-    <nav className="sticky top-0 z-50 p-3 w-full bg-[#081B3A] border-b border-slate-800 text-white backdrop-blur-md">
+    <nav
+      ref={navRef}
+      className={`p-3 w-full border-b border-[#374151] text-white transition-all duration-300 ${navBgClass}`}
+    >
       <div className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 h-16">
         {/* Logo */}
         <div className="flex items-center gap-2 sm:gap-3">
@@ -97,46 +121,29 @@ const Navbar: React.FC<NavbarProps> = ({
 
         {/* Desktop Navigation */}
         <ul className="hidden md:flex items-center gap-8">
-          {navItems.map((item) => (
-            <li key={item.href}>
-              <a
-                href={item.href}
-                onClick={handleLinkClick}
-                className={`transition duration-200 ${
-                  activeTab === item.href
-                    ? "text-cyan-400 font-semibold"
-                    : "text-slate-300 hover:text-white"
-                }`}
-              >
-                {item.label}
-              </a>
-            </li>
-          ))}
+          {navItems.map((item) => {
+            const isActive = activeTab === item.href;
+            const linkClass = isActive
+              ? "text-cyan-400 font-semibold"
+              : "text-slate-300 hover:text-white";
+
+            return (
+              <li key={item.href}>
+                <a
+                  href={item.href}
+                  onClick={handleLinkClick}
+                  className={`transition duration-200 ${linkClass}`}
+                >
+                  {item.label}
+                </a>
+              </li>
+            );
+          })}
         </ul>
 
         {/* Desktop Button */}
         <div className="hidden md:block">
-          <button
-            className="
-    inline-flex
-    items-center
-    justify-center
-    gap-2
-    px-8
-    h-10
-    cursor-pointer
-    rounded-full
-    bg-[#6C63FF]
-    text-white
-    text-sm
-    font-medium
-    transition-all
-    duration-300
-    hover:bg-[#5B54E8]
-    hover:scale-105
-    active:scale-95
-  "
-          >
+          <button className="inline-flex items-center justify-center gap-2 px-8 h-10 cursor-pointer rounded-full bg-[#6C63FF] text-white text-sm font-medium transition-all duration-300 hover:bg-[#5B54E8] hover:scale-105 active:scale-95">
             <span>
               <Link href="/contact-us">Contact us</Link>
             </span>
@@ -188,20 +195,23 @@ const Navbar: React.FC<NavbarProps> = ({
         }`}
       >
         <div className="bg-[#081B3A] border-t border-slate-700 px-5 py-4 space-y-4">
-          {navItems.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              onClick={handleLinkClick}
-              className={`block text-base ${
-                activeTab === item.href
-                  ? "text-cyan-400 font-semibold"
-                  : "text-slate-300"
-              }`}
-            >
-              {item.label}
-            </a>
-          ))}
+          {navItems.map((item) => {
+            const isActive = activeTab === item.href;
+            const mobileLinkClass = isActive
+              ? "text-cyan-400 font-semibold"
+              : "text-slate-300";
+
+            return (
+              <a
+                key={item.href}
+                href={item.href}
+                onClick={handleLinkClick}
+                className={`block text-base ${mobileLinkClass}`}
+              >
+                {item.label}
+              </a>
+            );
+          })}
 
           <div className="pt-2">
             <Button

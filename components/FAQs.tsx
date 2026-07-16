@@ -37,20 +37,17 @@ const FAQs = () => {
 
   return (
     // px-20 → responsive px-5 sm:px-8 md:px-12 lg:px-20 (mobile pe content ka saans lene ki jagah)
-    <section className="md:py-10 lg:py-0 py-0 px-5 sm:px-8 md:px-12 lg:px-20">
+    <section className=" lg:py-0 py-10 px-5 sm:px-8 md:px-12 lg:px-20">
       <div className="max-w-6xl mx-auto">
         {/* Heading */}
         <div className="text-center">
-          <h2 className=" font-manrope text-2xl sm:text-3xl md:text-5xl font-semibold text-white leading-tight">
+          <h2 className=" font-manrope text-2xl sm:text-3xl md:text-5xl font-medium text-white leading-tight">
             Frequently Asked <span className="text-cyan-400">Questions</span>
           </h2>
 
           <p className="font-lato text-gray-300 mt-4 sm:mt-5 max-w-2xl mx-auto text-sm md:text-lg leading-relaxed px-2 sm:px-0">
             Find answers to your questions right here, and don't hesitate to
-            <Link href="/contact-us" className="text-cyan-400 hover:underline">
-              Contact us
-            </Link>
-            if you couldn't find what you're looking for.
+            Contact us if you couldn't find what you're looking for.
           </p>
 
           <button className="mt-6 sm:mt-8 cursor-pointer inline-flex items-center gap-2 rounded-full bg-[#6C63FF] hover:bg-[#5d54ff] transition px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base text-white font-medium">

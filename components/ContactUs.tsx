@@ -2,7 +2,7 @@ import React from "react";
 
 const ContactUs = () => {
   return (
-    <section className="bg-[#071B3B] py-16 lg:py-24">
+    <section className="bg-[#071B3B] mt-10 py-16 lg:py-24">
       <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-14 items-center">
           {/* Left Side */}

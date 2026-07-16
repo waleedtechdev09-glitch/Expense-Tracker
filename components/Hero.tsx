@@ -19,7 +19,7 @@ const Hero: React.FC<HeroProps> = ({ data = HERO_DATA }) => {
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-4 items-center relative z-10">
         {/* Left Side: Content & Stats */}
         <div className="lg:col-span-6 flex flex-col justify-center items-start text-left">
-          <h1 className="font-manrope text-4xl sm:text-5xl md:text-6xl lg:text-[68px] font-medium tracking-tight leading-[1.12] mb-6">
+          <h1 className="mt-25 font-manrope text-4xl sm:text-5xl md:text-6xl lg:text-[68px] font-medium tracking-tight leading-[1.12] mb-6">
             Take Control
             <br />
             <span className="text-white">of </span>
@@ -137,7 +137,7 @@ const Hero: React.FC<HeroProps> = ({ data = HERO_DATA }) => {
               background: "linear-gradient(135deg, #4FD1FF 0%, #6C63FE 100%)",
             }}
           />
-          <div className="relative w-full h-full max-w-[550px] lg:max-w-none lg:w-[115%] lg:h-[115%] transition-transform duration-500 ease-out hover:scale-[1.01] z-10">
+          <div className="relative w-full h-full max-w-[550px] lg:max-w-none lg:w-[115%]  lg:h-[115%] transition-transform duration-500 ease-out hover:scale-[1.01] z-10">
             <Image
               src={data.heroImage}
               alt="Expense Tracker Mobile Experience"

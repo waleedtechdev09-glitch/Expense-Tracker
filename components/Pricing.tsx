@@ -7,13 +7,13 @@ const Pricing = () => {
   const [yearly, setYearly] = useState(true);
 
   return (
-    <section className="relative overflow-visible py-16 md:py-24 ">
+    <section className="relative overflow-visible py-16 lg:py-4 ">
       {/* 
         Highlighted Fluid Background Image 
         Positioned absolutely relative to the section, keeping it BEHIND the cards (z-0)
       */}
       <div
-        className=" hidden lg:block absolute left-[-5%] bottom-[-10%] sm:left-[-2%] sm:bottom-[-8%] md:left-[2%] md:bottom-[-5%] lg:-left-[10%] lg:bottom-[-30%]
+        className=" hidden lg:block absolute left-[-5%] bottom-[-10%] sm:left-[-2%] sm:bottom-[-8%] md:left-[2%] md:bottom-[-5%] lg:-left-[10%] lg:bottom-[-40%]
           w-[220px] h-[220px] sm:w-[280px] sm:h-[280px] md:w-[340px] md:h-[340px] lg:w-[500px] lg:h-[500px]
           pointer-events-none select-none z-0 opacity-90"
       >
@@ -28,7 +28,7 @@ const Pricing = () => {
       <div className="relative mx-auto max-w-7xl px-5 z-10">
         {/* Heading */}
         <div className="text-center mb-14">
-          <h2 className="text-3xl md:text-5xl font-bold text-white font-manrope">
+          <h2 className="text-3xl md:text-5xl font-medium text-white font-manrope">
             Honest and Thoughtful <span className="text-cyan-400">Pricing</span>
           </h2>
 
