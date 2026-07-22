@@ -9,7 +9,7 @@ const FAQs = () => {
 
   return (
     // px-20 → responsive px-5 sm:px-8 md:px-12 lg:px-20 (mobile pe content ka saans lene ki jagah)
-    <section className=" lg:py-0 py-10 px-5 sm:px-8 md:px-12 lg:px-20">
+    <section id="faqs" className=" lg:py-0 py-10 px-5 sm:px-8 md:px-12 lg:px-20">
       <div className="max-w-6xl mx-auto">
         {/* Heading */}
         <div className="text-center">

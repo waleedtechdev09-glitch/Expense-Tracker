@@ -27,30 +27,41 @@ const Navbar: React.FC<NavbarProps> = ({
   const navRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const targets = navItems
-      .map((item) => document.querySelector(item.href))
-      .filter((el): el is Element => el !== null);
+    let ticking = false;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const id = entry.target.getAttribute("id");
-            if (id) setActiveTab(`#${id}`);
+    const updateActiveTab = () => {
+      const scrollPos = window.scrollY + 120;
+      let current = "";
+
+      navItems.forEach((item) => {
+        const el = document.querySelector(item.href);
+        if (el) {
+          const top =
+            (el as Element).getBoundingClientRect().top + window.scrollY;
+          if (top <= scrollPos) {
+            current = item.href;
           }
-        });
-      },
-      {
-        root: null,
-        rootMargin: "-40% 0px -50% 0px",
-        threshold: 0,
-      },
-    );
+        }
+      });
 
-    targets.forEach((target) => observer.observe(target));
+      setActiveTab((prev) => current || prev);
+    };
+
+    const onScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          updateActiveTab();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    updateActiveTab();
+    window.addEventListener("scroll", onScroll, { passive: true });
 
     return () => {
-      targets.forEach((target) => observer.unobserve(target));
+      window.removeEventListener("scroll", onScroll);
     };
   }, [navItems]);
 
@@ -72,6 +83,13 @@ const Navbar: React.FC<NavbarProps> = ({
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
+    const href = e.currentTarget.getAttribute("href");
+    if (href) {
+      const target = document.querySelector(href);
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth" });
+      }
+    }
     setMobileMenuOpen(false);
   };
 
@@ -124,7 +142,7 @@ const Navbar: React.FC<NavbarProps> = ({
           {navItems.map((item) => {
             const isActive = activeTab === item.href;
             const linkClass = isActive
-              ? "text-cyan-400 font-semibold"
+              ? "text-[#4FD1FF] font-medium"
               : "text-slate-300 hover:text-white";
 
             return (
@@ -198,7 +216,7 @@ const Navbar: React.FC<NavbarProps> = ({
           {navItems.map((item) => {
             const isActive = activeTab === item.href;
             const mobileLinkClass = isActive
-              ? "text-cyan-400 font-semibold"
+              ? "text-red-500 font-semibold"
               : "text-slate-300";
 
             return (

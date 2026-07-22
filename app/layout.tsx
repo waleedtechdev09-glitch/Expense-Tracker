@@ -59,7 +59,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${manrope.variable} ${lato.variable} overflow-x-hidden`}>
+    <html
+      lang="en"
+      className={`${manrope.variable} ${lato.variable} overflow-x-hidden`}
+    >
       <body className="min-h-screen bg-[#020813] text-slate-100 flex flex-col font-sans relative overflow-x-hidden">
         {/* 
           Global Background Image Layer:
