@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
 
 const sections = [
@@ -70,36 +70,67 @@ const sections = [
   },
 ];
 
+// Sidebar apni jagah lock hone ke baad top se kitna gap rahega
+const FIXED_TOP_OFFSET = 96; // 24 * 4px (top-24)
+
 export default function TermConditions() {
   const [active, setActive] = useState("acceptance");
   const [open, setOpen] = useState(false);
+  const [isSidebarFixed, setIsSidebarFixed] = useState(false);
+  const [sidebarBox, setSidebarBox] = useState({ left: 0, width: 260 });
 
+  const heroRef = useRef<HTMLDivElement>(null); // heading + desc + date wrapper
+  const asideRef = useRef<HTMLDivElement>(null); // sidebar column (grid cell)
+
+  // Section active-link tracking
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         const visible = entries.find((e) => e.isIntersecting);
-
-        if (visible) {
-          setActive(visible.target.id);
-        }
+        if (visible) setActive(visible.target.id);
       },
-      {
-        threshold: 0.3,
-      },
+      { threshold: 0.3 },
     );
 
     sections.forEach((section) => {
       const element = document.getElementById(section.id);
-
       if (element) observer.observe(element);
     });
 
     return () => observer.disconnect();
   }, []);
 
-  const gotoSection = (id: any) => {
-    setOpen(false);
+  // Measure the sidebar column's left position + width so the
+  // "fixed" version lines up exactly with the grid column.
+  useEffect(() => {
+    const measure = () => {
+      if (asideRef.current) {
+        const rect = asideRef.current.getBoundingClientRect();
+        setSidebarBox({ left: rect.left, width: rect.width });
+      }
+    };
 
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, []);
+
+  // Scroll-driven lock: sidebar becomes fixed only after the hero
+  // (heading + description + date) has fully scrolled past.
+  useEffect(() => {
+    const onScroll = () => {
+      if (!heroRef.current) return;
+      const heroBottom = heroRef.current.getBoundingClientRect().bottom;
+      setIsSidebarFixed(heroBottom <= FIXED_TOP_OFFSET);
+    };
+
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const gotoSection = (id: string) => {
+    setOpen(false);
     document.getElementById(id)?.scrollIntoView({
       behavior: "smooth",
       block: "start",
@@ -109,22 +140,24 @@ export default function TermConditions() {
   return (
     <section className="bg-[#071B3B] text-white min-h-screen">
       <div className="max-w-7xl mx-auto px-5 py-16">
-        {/* Heading */}
+        {/* Hero: heading + description + date. Sidebar unlocks right after this. */}
+        <div ref={heroRef}>
+          <h1 className="text-4xl md:text-5xl font-manrope lg:mt-15 font-medium">
+            Terms & Conditions
+          </h1>
 
-        <h1 className="text-4xl md:text-6xl font-bold">Terms & Conditions</h1>
+          <p className="mt-6 text-gray-300 text-lg max-w-4xl leading-8">
+            Please read these Terms & Conditions carefully before using the
+            Expense Tracker application. By accessing or using our services, you
+            agree to be bound by these terms.
+          </p>
 
-        <p className="mt-6 text-gray-300 text-lg max-w-4xl leading-8">
-          Please read these Terms & Conditions carefully before using the
-          Expense Tracker application. By accessing or using our services, you
-          agree to be bound by these terms.
-        </p>
-
-        <p className="mt-5 text-xl text-gray-400">
-          Effective as of: June 2, 2026
-        </p>
+          <p className="mt-5 text-xl text-gray-400">
+            Effective as of: June 2, 2026
+          </p>
+        </div>
 
         {/* Mobile Menu */}
-
         <button
           onClick={() => setOpen(!open)}
           className="lg:hidden mt-10 bg-white/10 rounded-lg p-3"
@@ -134,15 +167,28 @@ export default function TermConditions() {
 
         <div className="grid lg:grid-cols-[260px_1fr] gap-10 mt-12">
           {/* Sidebar */}
-
-          <aside className={`${open ? "block" : "hidden"} lg:block`}>
-            <div className="lg:sticky lg:top-24 space-y-2">
+          <aside
+            ref={asideRef}
+            className={`${open ? "block" : "hidden"} lg:block`}
+          >
+            <div
+              className="space-y-2"
+              style={
+                isSidebarFixed
+                  ? {
+                      position: "fixed",
+                      top: FIXED_TOP_OFFSET,
+                      left: sidebarBox.left,
+                      width: sidebarBox.width,
+                    }
+                  : undefined
+              }
+            >
               {sections.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => gotoSection(item.id)}
                   className={`w-full text-left px-4 py-3 rounded-lg transition
-
                   ${
                     active === item.id
                       ? "bg-white/10 border-l-4 border-white text-white"
@@ -156,7 +202,6 @@ export default function TermConditions() {
           </aside>
 
           {/* Content */}
-
           <div>
             {sections.map((section) => (
               <section
