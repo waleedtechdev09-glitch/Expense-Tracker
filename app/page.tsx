@@ -12,24 +12,26 @@ const Home = () => {
   return (
     <div className="bg-[linear-gradient(180deg,#081B3A_0%,#0E2A5E_44.37%,#081B3A_100%)] min-h-screen w-full">
       <div
-        className="bg-no-repeat"
-        style={{
-          backgroundImage: "url('/assets/bg-image.png')",
-          backgroundSize: "104% auto",
-          backgroundPosition: "center -160px", // image 80px niche se start hogi
-        }}
+        className="
+    bg-none
+    lg:bg-[url('/assets/bg-image.png')]
+    lg:bg-no-repeat
+    lg:bg-[length:104%_auto]
+    lg:bg-[position:center_-160px]
+  "
       >
         <Hero />
         <PowerfulFeature />
       </div>
       <Rating />
       <div
-        className="bg-no-repeat"
-        style={{
-          backgroundImage: "url('/assets/dotted.png')",
-          backgroundSize: "100% auto",
-          backgroundPosition: "center ", // image 80px niche se start hogi
-        }}
+        className="
+    bg-none
+    lg:bg-[url('/assets/dotted.png')]
+    lg:bg-no-repeat
+    lg:bg-[length:100%_auto]
+    lg:bg-center
+  "
       >
         <AiPoweredFeature />
       </div>

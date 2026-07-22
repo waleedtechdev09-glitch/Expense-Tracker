@@ -123,7 +123,7 @@ const Finances = () => {
           src={data.decorImage}
           alt=""
           fill
-          className="object-contain rotate-[270.85deg]"
+          className=" lg:block hidden object-contain rotate-[270.85deg]"
         />
       </div>
     </section>
