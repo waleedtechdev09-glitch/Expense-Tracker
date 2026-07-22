@@ -32,19 +32,26 @@ const Navbar: React.FC<NavbarProps> = ({
     let ticking = false;
 
     const updateActiveTab = () => {
-      const scrollPos = window.scrollY + 120;
+      const viewportCenter = window.scrollY + window.innerHeight / 2;
       let current = "";
-      let lastTop = -Infinity;
 
-      navItems.forEach((item) => {
-        const el = document.querySelector(item.href);
-        if (el) {
-          const top =
-            (el as Element).getBoundingClientRect().top + window.scrollY;
-          if (top <= scrollPos && top > lastTop) {
-            lastTop = top;
-            current = item.href;
-          }
+      const sectionToTab: Record<string, string> = {
+        "features": "#features",
+        "ai-features": "#features",
+        "rating": "#rating",
+        "pricing": "#pricing",
+        "faqs": "#faqs",
+      };
+
+      Object.entries(sectionToTab).forEach(([id, tab]) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        const rect = el.getBoundingClientRect();
+        const top = rect.top + window.scrollY;
+        const bottom = top + rect.height;
+
+        if (viewportCenter >= top && viewportCenter < bottom) {
+          current = tab;
         }
       });
 
@@ -104,6 +111,8 @@ const Navbar: React.FC<NavbarProps> = ({
       const target = document.querySelector(href);
       if (target) {
         target.scrollIntoView({ behavior: "smooth" });
+      } else {
+        window.location.href = "/" + href;
       }
       setMobileMenuOpen(false);
     }

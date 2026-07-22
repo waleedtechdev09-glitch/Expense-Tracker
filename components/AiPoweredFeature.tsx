@@ -16,7 +16,7 @@ const data = {
 const AiPoweredFeature = () => {
   return (
     <section
-      id="features"
+      id="ai-features"
       className="relative w-full min-h-screen text-white lg:py-16 py-10 px-6 md:px-16 lg:px-24 overflow-visible flex items-center"
     >
       {/* Gradient glow behind the fluid shape */}
