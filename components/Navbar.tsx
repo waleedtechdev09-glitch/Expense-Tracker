@@ -26,7 +26,7 @@ const Navbar: React.FC<NavbarProps> = ({
   const [isScrolled, setIsScrolled] = useState(false);
   const navRef = useRef<HTMLElement>(null);
   const clickingRef = useRef(false);
-  const scrollDebounceRef = useRef<NodeJS.Timeout | null>(null);
+  const scrollStopTimerRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     let ticking = false;
@@ -61,11 +61,12 @@ const Navbar: React.FC<NavbarProps> = ({
       }
 
       if (clickingRef.current) {
-        if (scrollDebounceRef.current) clearTimeout(scrollDebounceRef.current);
-        scrollDebounceRef.current = setTimeout(() => {
+        if (scrollStopTimerRef.current) clearTimeout(scrollStopTimerRef.current);
+        scrollStopTimerRef.current = setTimeout(() => {
           clickingRef.current = false;
-          scrollDebounceRef.current = null;
-        }, 100);
+          scrollStopTimerRef.current = null;
+          updateActiveTab();
+        }, 200);
       }
     };
 
@@ -74,7 +75,7 @@ const Navbar: React.FC<NavbarProps> = ({
 
     return () => {
       window.removeEventListener("scroll", onScroll);
-      if (scrollDebounceRef.current) clearTimeout(scrollDebounceRef.current);
+      if (scrollStopTimerRef.current) clearTimeout(scrollStopTimerRef.current);
     };
   }, [navItems]);
 
@@ -100,7 +101,6 @@ const Navbar: React.FC<NavbarProps> = ({
     if (href) {
       setActiveTab(href);
       clickingRef.current = true;
-      if (scrollDebounceRef.current) clearTimeout(scrollDebounceRef.current);
       const target = document.querySelector(href);
       if (target) {
         target.scrollIntoView({ behavior: "smooth" });

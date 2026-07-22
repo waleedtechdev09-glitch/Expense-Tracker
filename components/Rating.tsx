@@ -5,7 +5,10 @@ import { STATS_DATA } from "@/config/Stat_Data";
 
 const Rating = () => {
   return (
-    <section id="reviews" className="w-full bg-transparent md:py-10 py-0  px-6 sm:px-16 lg:px-24 flex justify-center items-center ">
+    <section
+      id="rating"
+      className="w-full bg-transparent md:py-10 py-0  px-6 sm:px-16 lg:px-24 flex justify-center items-center "
+    >
       <div className="relative w-full max-w-7xl overflow-hidden rounded-2xl md:rounded-3xl border border-white/[0.08] bg-white/10 p-6 md:p-10 lg:py-12">
         <div className="relative z-10 grid grid-cols-2 md:grid-cols-4 gap-y-10 md:gap-y-0 items-center text-center">
           {STATS_DATA.map((stat, index) => (
