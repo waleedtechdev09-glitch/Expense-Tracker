@@ -25,6 +25,8 @@ const Navbar: React.FC<NavbarProps> = ({
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const navRef = useRef<HTMLElement>(null);
+  const clickingRef = useRef(false);
+  const scrollDebounceRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     let ticking = false;
@@ -32,13 +34,15 @@ const Navbar: React.FC<NavbarProps> = ({
     const updateActiveTab = () => {
       const scrollPos = window.scrollY + 120;
       let current = "";
+      let lastTop = -Infinity;
 
       navItems.forEach((item) => {
         const el = document.querySelector(item.href);
         if (el) {
           const top =
             (el as Element).getBoundingClientRect().top + window.scrollY;
-          if (top <= scrollPos) {
+          if (top <= scrollPos && top > lastTop) {
+            lastTop = top;
             current = item.href;
           }
         }
@@ -48,12 +52,20 @@ const Navbar: React.FC<NavbarProps> = ({
     };
 
     const onScroll = () => {
-      if (!ticking) {
+      if (!ticking && !clickingRef.current) {
         requestAnimationFrame(() => {
           updateActiveTab();
           ticking = false;
         });
         ticking = true;
+      }
+
+      if (clickingRef.current) {
+        if (scrollDebounceRef.current) clearTimeout(scrollDebounceRef.current);
+        scrollDebounceRef.current = setTimeout(() => {
+          clickingRef.current = false;
+          scrollDebounceRef.current = null;
+        }, 100);
       }
     };
 
@@ -62,6 +74,7 @@ const Navbar: React.FC<NavbarProps> = ({
 
     return () => {
       window.removeEventListener("scroll", onScroll);
+      if (scrollDebounceRef.current) clearTimeout(scrollDebounceRef.current);
     };
   }, [navItems]);
 
@@ -85,12 +98,15 @@ const Navbar: React.FC<NavbarProps> = ({
     e.preventDefault();
     const href = e.currentTarget.getAttribute("href");
     if (href) {
+      setActiveTab(href);
+      clickingRef.current = true;
+      if (scrollDebounceRef.current) clearTimeout(scrollDebounceRef.current);
       const target = document.querySelector(href);
       if (target) {
         target.scrollIntoView({ behavior: "smooth" });
       }
+      setMobileMenuOpen(false);
     }
-    setMobileMenuOpen(false);
   };
 
   const navBgClass = isScrolled
