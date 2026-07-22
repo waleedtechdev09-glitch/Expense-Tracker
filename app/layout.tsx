@@ -64,21 +64,6 @@ export default function RootLayout({
       className={`${manrope.variable} ${lato.variable} overflow-x-hidden`}
     >
       <body className="min-h-screen bg-[#020813] text-slate-100 flex flex-col font-sans relative overflow-x-hidden">
-        {/* 
-          Global Background Image Layer:
-          Ye image ab pure layout ke background me stretch hogi, jisse Hero aur Powerful Feature 
-          dono sections ke peeche background pattern lagatar (seamlessly) flow karega.
-        */}
-        <div className="absolute inset-0 w-full h-full pointer-events-none z-0 select-none opacity-40">
-          <Image
-            src="/assets/bg-image.png"
-            alt="Seamless Background Texture"
-            fill
-            className="object-cover object-top" // starts perfectly from the top of Hero down to Features
-            priority
-          />
-        </div>
-
         {/* Header/Navbar Section */}
         <Navbar />
 
