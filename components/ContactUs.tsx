@@ -7,11 +7,11 @@ const ContactUs = () => {
         <div className="grid lg:grid-cols-2 gap-14 items-center">
           {/* Left Side */}
           <div>
-            <h2 className="text-white text-4xl md:text-5xl font-bold">
+            <h2 className="font-manrope text-white text-4xl md:text-5xl font-medium">
               Get in Touch
             </h2>
 
-            <p className="text-gray-300 mt-5 text-base md:text-lg leading-8 max-w-xl">
+            <p className="font-lato text-gray-300 mt-5 text-normal md:text-normal leading-8 max-w-xl">
               Have questions about Expense Tracker? We'd love to hear from you.
               Fill out the form below, and our team will get back to you as soon
               as possible.
@@ -72,7 +72,7 @@ const ContactUs = () => {
 
               <button
                 type="submit"
-                className="bg-[#6C63FF] hover:bg-[#5d54ff] text-white px-10 py-3 rounded-full font-medium transition-all duration-300"
+                className="bg-[#6C63FF] hover:bg-[#5d54ff] text-white cursor-pointer px-10 py-3 rounded-full font-medium transition-all duration-300"
               >
                 Send
               </button>

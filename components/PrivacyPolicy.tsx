@@ -218,11 +218,11 @@ export default function PrivacyPolicy() {
       <div className="max-w-7xl mx-auto px-5 py-16">
         {/* Heading */}
 
-        <h1 className="text-4xl md:text-[54px] font-semibold font-manrope">
+        <h1 className="text-4xl lg:mt-18 md:text-[54px] font-medium font-manrope">
           Privacy Policy
         </h1>
 
-        <p className="mt-6 text-gray-300 text-lg max-w-5xl leading-8 font-lato">
+        <p className="mt-6 text-gray-300 text-normal max-w-5xl leading-8 font-lato">
           We value your privacy and are committed to protecting your personal
           information. Your privacy matters to us. Learn how we collect, use,
           and protect your information while using our Expense Tracker
