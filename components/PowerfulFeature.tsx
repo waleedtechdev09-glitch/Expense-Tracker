@@ -53,7 +53,7 @@ const PowerfulFeature = () => {
   return (
     <section
       id="features"
-      className="relative w-full min-h-screen text-white pb-16 md:pb-10 pt-8 px-6 md:px-16 lg:px-24"
+      className="relative w-full min-h-screen text-white pb-16 md:pb-10 pt-0 md:pt-8 px-6 md:px-16 lg:px-24"
     >
       {/* 3D Sphere Orb Asset */}
       <div className="hidden lg:block absolute left-[-40px] sm:left-[-30px] lg:left-[-180px] -top-[8%] sm:-top-[15%] md:-top-[10%] md:left-[-10%] lg:-top-[14%] xl:-top-[20%] w-[240px] h-[240px] sm:w-[380px] sm:h-[380px] lg:w-[400px] lg:h-[400px] xl:w-[500px] xl:h-[500px] pointer-events-none z-20">
