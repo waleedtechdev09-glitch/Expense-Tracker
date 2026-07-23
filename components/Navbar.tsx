@@ -3,8 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { NavItem, NAV_ITEMS, BRAND_INFO } from "../config/navigation";
-import Button from "./Button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Menu, X } from "lucide-react";
 import Link from "next/link";
 
 interface NavbarProps {
@@ -36,11 +35,11 @@ const Navbar: React.FC<NavbarProps> = ({
       let current = "";
 
       const sectionToTab: Record<string, string> = {
-        "features": "#features",
+        features: "#features",
         "ai-features": "#features",
-        "rating": "#rating",
-        "pricing": "#pricing",
-        "faqs": "#faqs",
+        rating: "#rating",
+        pricing: "#pricing",
+        faqs: "#faqs",
       };
 
       Object.entries(sectionToTab).forEach(([id, tab]) => {
@@ -68,7 +67,8 @@ const Navbar: React.FC<NavbarProps> = ({
       }
 
       if (clickingRef.current) {
-        if (scrollStopTimerRef.current) clearTimeout(scrollStopTimerRef.current);
+        if (scrollStopTimerRef.current)
+          clearTimeout(scrollStopTimerRef.current);
         scrollStopTimerRef.current = setTimeout(() => {
           clickingRef.current = false;
           scrollStopTimerRef.current = null;
@@ -119,31 +119,31 @@ const Navbar: React.FC<NavbarProps> = ({
   };
 
   const navBgClass = isScrolled
-    ? "fixed top-0 left-0 right-0 z-50 bg-[#081B3A]/90 backdrop-blur-md shadow-lg"
+    ? "fixed top-0 left-0 right-0 z-50 bg-[#081B3A]/90 backdrop-blur-md shadow-xl"
     : "sticky top-0 z-50 bg-transparent";
 
   return (
     <nav
       ref={navRef}
-      className={`p-3 w-full border-b border-[#374151] text-white transition-all duration-300 ${navBgClass}`}
+      className={`w-full border-b border-[#374151]/60 text-white transition-all duration-300 ${navBgClass}`}
     >
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 h-16">
-        {/* Logo */}
-        <div className="flex items-center gap-2 sm:gap-3">
+      <div className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 h-16 sm:h-20">
+        {/* Brand / Logo */}
+        <Link href="/" className="flex items-center gap-2.5 group">
           {logoSrc && !imageError ? (
-            <div className="relative w-8 h-8">
+            <div className="relative w-8 h-8 sm:w-9 sm:h-9 transition-transform group-hover:scale-105">
               <Image
                 src={logoSrc}
                 alt={logoAlt}
                 fill
                 className="object-contain"
-                sizes="32px"
+                sizes="36px"
                 priority
                 onError={() => setImageError(true)}
               />
             </div>
           ) : (
-            <div className="w-8 h-8 text-cyan-400">
+            <div className="w-8 h-8 text-[#4FD1FF]">
               <svg
                 viewBox="0 0 24 24"
                 fill="none"
@@ -157,17 +157,17 @@ const Navbar: React.FC<NavbarProps> = ({
             </div>
           )}
 
-          <span className="font-semibold text-base sm:text-lg">
+          <span className="font-semibold text-base sm:text-lg tracking-tight group-hover:text-[#4FD1FF] transition-colors">
             {brandName}
           </span>
-        </div>
+        </Link>
 
         {/* Desktop Navigation */}
-        <ul className="hidden md:flex items-center gap-8">
+        <ul className="hidden md:flex items-center gap-8 text-sm">
           {navItems.map((item) => {
             const isActive = activeTab === item.href;
             const linkClass = isActive
-              ? "text-[#4FD1FF] font-medium"
+              ? "text-[#4FD1FF] font-semibold"
               : "text-slate-300 hover:text-white";
 
             return (
@@ -175,95 +175,76 @@ const Navbar: React.FC<NavbarProps> = ({
                 <a
                   href={item.href}
                   onClick={handleLinkClick}
-                  className={`transition duration-200 ${linkClass}`}
+                  className={`transition-colors duration-200 relative py-1 ${linkClass}`}
                 >
                   {item.label}
+                  {isActive && (
+                    <span className="absolute bottom-0 left-0 w-full h-[2px] bg-[#4FD1FF] rounded-full" />
+                  )}
                 </a>
               </li>
             );
           })}
         </ul>
 
-        {/* Desktop Button */}
+        {/* Desktop CTA Button */}
         <div className="hidden md:block">
-          <button className="inline-flex items-center justify-center gap-2 px-8 h-10 cursor-pointer rounded-full bg-[#6C63FF] text-white text-sm font-medium transition-all duration-300 hover:bg-[#5B54E8] hover:scale-105 active:scale-95">
-            <span>
-              <Link href="/contact-us">Contact us</Link>
-            </span>
-            <ArrowRight size={12} strokeWidth={2.5} />
-          </button>
+          <Link
+            href="/contact-us"
+            className="inline-flex items-center justify-center gap-2 px-6 h-10 rounded-full bg-[#6C63FF] text-white text-sm font-medium transition-all duration-300 hover:bg-[#5B54E8] hover:shadow-lg hover:shadow-[#6C63FF]/30 active:scale-95"
+          >
+            <span>Contact us</span>
+            <ArrowRight size={14} strokeWidth={2.5} />
+          </Link>
         </div>
 
-        {/* Mobile Hamburger */}
+        {/* Mobile Hamburger Button */}
         <button
-          className="md:hidden"
+          className="md:hidden p-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-colors focus:outline-none"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label="Toggle menu"
         >
-          {mobileMenuOpen ? (
-            <svg
-              className="w-7 h-7"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          ) : (
-            <svg
-              className="w-7 h-7"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
-          )}
+          {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Dropdown */}
       <div
-        className={`md:hidden overflow-hidden transition-all duration-300 ${
-          mobileMenuOpen ? "max-h-96" : "max-h-0"
+        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+          mobileMenuOpen
+            ? "max-h-[380px] opacity-100 border-b border-[#374151]/50"
+            : "max-h-0 opacity-0"
         }`}
       >
-        <div className="bg-[#081B3A] border-t border-slate-700 px-5 py-4 space-y-4">
+        <div className="bg-[#081B3A]/95 backdrop-blur-xl px-5 py-5 space-y-2">
           {navItems.map((item) => {
             const isActive = activeTab === item.href;
             const mobileLinkClass = isActive
-              ? "text-red-500 font-semibold"
-              : "text-slate-300";
+              ? "text-[#4FD1FF] bg-[#4FD1FF]/10 font-semibold border-l-2 border-[#4FD1FF]"
+              : "text-slate-300 hover:text-white hover:bg-slate-800/40";
 
             return (
               <a
                 key={item.href}
                 href={item.href}
                 onClick={handleLinkClick}
-                className={`block text-base ${mobileLinkClass}`}
+                className={`block px-4 py-2.5 rounded-lg text-base transition-all duration-200 ${mobileLinkClass}`}
               >
                 {item.label}
               </a>
             );
           })}
 
-          <div className="pt-2">
-            <Button
-              variant="primary"
-              showArrow
-              onClick={() => console.log("Contact")}
+          {/* Mobile CTA Button */}
+          <div className="pt-3">
+            <Link
+              href="/contact-us"
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#6C63FF] text-white font-medium text-sm transition-all active:scale-[0.98] shadow-md shadow-[#6C63FF]/20"
             >
-              Contact us
-            </Button>
+              <span>Contact us</span>
+              <ArrowRight size={16} strokeWidth={2.5} />
+            </Link>
           </div>
         </div>
       </div>
