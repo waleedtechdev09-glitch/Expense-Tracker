@@ -3,13 +3,13 @@ import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
 import Link from "next/link";
 const Footer = () => {
   const links = [
-    "Features",
-    "Pricing",
-    "Reviews",
-    "Contact",
-    "FAQs",
-    "Privacy Policy",
-    "Term & Condition",
+    { name: "Features", href: "#features" },
+    { name: "Pricing", href: "#pricing" },
+    { name: "Reviews", href: "#rating" },
+    { name: "Contact", href: "/contact-us" },
+    { name: "FAQs", href: "#faqs" },
+    { name: "Privacy Policy", href: "/privacy-policy" },
+    { name: "Term & Condition", href: "/term-condition" },
   ];
 
   return (
@@ -38,13 +38,13 @@ const Footer = () => {
 
         {/* Navigation */}
         <div className="mt-10 flex flex-wrap justify-center gap-x-10 gap-y-5 text-sm">
-          {links.map((item) => (
+          {links.map((link) => (
             <Link
-              key={item}
-              href="#"
+              key={link.name}
+              href={link.href}
               className="text-white hover:text-gray-300 transition duration-300"
             >
-              {item}
+              {link.name}
             </Link>
           ))}
         </div>
