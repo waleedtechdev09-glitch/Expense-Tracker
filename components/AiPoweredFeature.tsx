@@ -23,7 +23,7 @@ const AiPoweredFeature = () => {
       <div className="hidden lg:block absolute lg:-right-[20%] lg:-top-[18%] w-[550px] h-[550px] rounded-full blur-3xl opacity-50 pointer-events-none select-none z-10 bg-[radial-gradient(circle_at_center,_rgba(56,189,248,0.55)_0%,_rgba(99,102,241,0.45)_35%,_rgba(236,72,153,0.35)_65%,_transparent_100%)]" />
 
       {/* Top Right Abstract Fluid Shape Asset — large screens only, bleeds up into the section above */}
-      <div className="hidden lg:block absolute lg:-right-[20%] lg:-top-[13%] w-[550px] h-[550px] pointer-events-none select-none z-30 opacity-90 mix-blend-screen">
+      <div className="hidden lg:block absolute xl:-right-[20%] xl:-top-[13%] lg:-right-[27%] lg:-top-[12%] w-[550px] h-[550px] pointer-events-none select-none z-30 opacity-90 mix-blend-screen">
         <Image
           src="/assets/fluid.png"
           alt="Abstract Decorative Fluid"
@@ -35,27 +35,28 @@ const AiPoweredFeature = () => {
       </div>
 
       <div className="max-w-7xl mx-auto w-full relative z-20">
-        {/* Header Title Section */}
-        <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-10 md:mb-16 lg:mb-24">
-          <h2 className="font-manrope text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight mb-4 leading-tight">
+        {/* Header Title Section - Left Aligned */}
+        <div className="text-left max-w-3xl mx-auto lg:mx-0 mb-6 sm:mb-10 md:mb-16 lg:mb-24">
+          <h2 className="font-manrope text-4xl sm:text-4xl md:text-5xl font-medium tracking-tight mb-4 leading-tight">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400 font-semibold">
               AI-Powered
             </span>{" "}
             Features
           </h2>
-          <p className="font-lato text-slate-300 text-sm sm:text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+          <p className="font-lato text-slate-300 text-sm sm:text-base md:text-lg max-w-2xl leading-relaxed">
             Let AI simplify expense tracking by instantly processing receipts
             and voice entries.
           </p>
         </div>
 
         {/* Main Content Layout Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 lg:gap-8 items-start lg:items-center">
           {/* LEFT SIDE: AI Description & Feature Points */}
-          <div className="lg:col-span-5 flex flex-col gap-10 max-w-xl mx-auto lg:mx-0">
+          <div className="lg:col-span-5 flex flex-col gap-8 md:gap-10 max-w-xl mx-auto lg:mx-0">
             {/* Feature 1: AI Receipt Scanner */}
             <div className="flex gap-4 items-start group">
-              <div className="mt-1 flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center text-cyan-400 group-hover:bg-cyan-500/20 transition-all duration-300">
+              {/* Icon - Hidden on small screens, visible on tablet and up */}
+              <div className="hidden sm:flex mt-1 flex-shrink-0 w-10 h-10 rounded-lg items-center justify-center text-cyan-400 group-hover:bg-cyan-500/20 transition-all duration-300">
                 <Image
                   src="/assets/scanner.png"
                   alt="Receipt Scanner"
@@ -64,7 +65,7 @@ const AiPoweredFeature = () => {
                 />
               </div>
               <div className="flex flex-col">
-                <h3 className="font-manrope text-xl font-medium  mb-2 tracking-wide text-white">
+                <h3 className="font-manrope text-lg sm:text-xl font-medium mb-2 tracking-wide text-white">
                   AI <span className="text-[#818CF8]">Receipt Scanner</span>
                 </h3>
                 <p className="font-lato text-white/90 text-sm sm:text-[15px] leading-relaxed italic font-light">
@@ -77,7 +78,8 @@ const AiPoweredFeature = () => {
 
             {/* Feature 2: Voice Expense Entry */}
             <div className="flex gap-4 items-start group">
-              <div className=" flex-shrink-0 w-10 h-10 rounded-lg  flex items-center justify-center text-indigo-400 group-hover:bg-indigo-500/20 transition-all duration-300">
+              {/* Icon - Hidden on small screens, visible on tablet and up */}
+              <div className="hidden sm:flex flex-shrink-0 w-10 h-10 rounded-lg items-center justify-center text-indigo-400 group-hover:bg-indigo-500/20 transition-all duration-300">
                 <Image
                   src="/assets/voice.png"
                   alt="Voice Entry"
@@ -86,7 +88,7 @@ const AiPoweredFeature = () => {
                 />
               </div>
               <div className="flex flex-col">
-                <h3 className="font-manrope text-xl font-medium mb-2 tracking-wide text-[#818CF8]">
+                <h3 className="font-manrope text-lg sm:text-xl font-medium mb-2 tracking-wide text-[#818CF8]">
                   Voice Expense <span className="text-white">Entry</span>
                 </h3>
                 <p className="font-lato text-white/90 text-sm sm:text-[15px] leading-relaxed italic font-light">
@@ -98,7 +100,7 @@ const AiPoweredFeature = () => {
             </div>
 
             {/* App Badges Container */}
-            <div className="flex flex-row flex-nowrap lg:px-14 items-center justify-start gap-2 sm:gap-3 mb-10 md:mb-14 w-full">
+            <div className="flex flex-row flex-nowrap md:px-0 lg:px-14 items-center justify-start gap-2 sm:gap-3 mt-4 w-full">
               {/* Google Play Button */}
               <Link
                 href={data.playStoreUrl}
@@ -177,26 +179,28 @@ const AiPoweredFeature = () => {
             </div>
           </div>
 
-          {/* RIGHT SIDE: Dynamic Double Tilt Phone Mockups */}
-          <div className="lg:col-span-7 flex items-center justify-center lg:justify-end relative mt-6 lg:mt-0">
+          {/* RIGHT SIDE: Phone Mockups - Visible on tablet and above with 2-column layout */}
+          <div className="hidden md:flex lg:col-span-7 items-center justify-center lg:justify-end relative mt-8 md:mt-10 lg:mt-0">
             <div
               className="
-      relative
-      w-full
-      max-w-[480px]
-      sm:max-w-[600px]
-      md:max-w-[700px]
-      lg:max-w-[900px]
-      xl:max-w-[980px]
-      aspect-[900/700]
-      transition-all
-      duration-500
-      hover:scale-[1.03]
-      rotate-[-4deg]
-      lg:-translate-y-10
-      lg:translate-x-12
-      
-    "
+                relative
+                w-full
+                max-w-[400px]
+                sm:max-w-[500px]
+                md:max-w-[600px]
+                lg:max-w-[900px]
+                xl:max-w-[980px]
+                aspect-[900/700]
+                transition-all
+                duration-500
+                hover:scale-[1.03]
+                md:rotate-[-2deg]
+                lg:rotate-[-4deg]
+                md:-translate-y-4
+                lg:-translate-y-10
+                md:translate-x-6
+                lg:translate-x-12
+              "
             >
               <Image
                 src="/assets/phone-groups.png"
@@ -204,10 +208,10 @@ const AiPoweredFeature = () => {
                 fill
                 priority
                 className="object-contain"
-                sizes="(max-width:640px) 480px,
-             (max-width:768px) 600px,
-             (max-width:1024px) 700px,
-             980px"
+                sizes="(max-width:640px) 400px,
+                       (max-width:768px) 500px,
+                       (max-width:1024px) 600px,
+                       980px"
               />
             </div>
           </div>

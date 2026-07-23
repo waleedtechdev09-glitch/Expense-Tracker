@@ -7,14 +7,17 @@ const Pricing = () => {
   const [yearly, setYearly] = useState(true);
 
   return (
-    <section id="pricing" className="relative overflow-visible py-16 lg:py-4 ">
+    <section
+      id="pricing"
+      className="relative overflow-visible xl:py-6 lg:py-0 py-0"
+    >
       {/* 
         Highlighted Fluid Background Image 
         Positioned absolutely relative to the section, keeping it BEHIND the cards (z-0)
       */}
       <div
-        className=" hidden lg:block absolute left-[-5%] bottom-[-10%] sm:left-[-2%] sm:bottom-[-8%] md:left-[2%] md:bottom-[-5%] lg:-left-[10%] lg:bottom-[-40%]
-          w-[220px] h-[220px] sm:w-[280px] sm:h-[280px] md:w-[340px] md:h-[340px] lg:w-[500px] lg:h-[500px]
+        className=" hidden lg:block absolute left-[-5%] bottom-[-10%] sm:left-[-2%] sm:bottom-[-8%] md:left-[2%] md:bottom-[-5%] xl:-left-[12%] xl:bottom-[-40%] lg:-left-[16%] lg:bottom-[-30%]
+          w-[220px] h-[220px] sm:w-[280px] sm:h-[280px] md:w-[340px] md:h-[340px] xl:w-[500px] xl:h-[500px] lg:w-[400px] lg:h-[400px]
           pointer-events-none select-none z-0 opacity-90"
       >
         <Image
@@ -26,9 +29,9 @@ const Pricing = () => {
       </div>
 
       <div className="relative mx-auto max-w-7xl px-5 z-10">
-        {/* Heading */}
-        <div className="text-center mb-14">
-          <h2 className="text-3xl md:text-5xl font-medium text-white font-manrope">
+        {/* Heading - Left aligned on mobile, center on larger screens */}
+        <div className="text-left md:text-center mb-14">
+          <h2 className="text-4xl md:text-5xl font-medium text-white font-manrope">
             Honest and Thoughtful <span className="text-cyan-400">Pricing</span>
           </h2>
 

@@ -43,11 +43,11 @@ const testimonials = [
 
 const TrustedPeople = () => {
   return (
-    <section className="relative overflow-hidden md:py-16 py-0">
+    <section className="relative overflow-hidden lg:py-20 xl:py-16 md:py-14 py-10">
       <div className="relative max-w-7xl mx-auto px-5">
-        {/* Heading */}
-        <div className="text-center mb-14">
-          <h2 className="font-manrope text-2xl md:text-5xl font-medium text-white leading-tight">
+        {/* Heading - Left aligned on mobile, center on larger screens */}
+        <div className="text-left md:text-center mb-14">
+          <h2 className="font-manrope text-4xl md:text-5xl lg:text-3xl xl:text-5xl font-medium text-white leading-tight">
             <span className="text-cyan-400">Trusted by People</span> Who Value
             Every Rupee
           </h2>

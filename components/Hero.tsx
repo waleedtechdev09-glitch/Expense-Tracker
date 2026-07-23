@@ -2,8 +2,8 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { HERO_DATA, HeroConfig } from "../config/hero";
-import Link from "next/dist/client/link";
 
 interface HeroProps {
   data?: HeroConfig;
@@ -11,49 +11,36 @@ interface HeroProps {
 
 const Hero: React.FC<HeroProps> = ({ data = HERO_DATA }) => {
   return (
-    // bg-transparent rakha hai taake parent ki image background me saaf nazar aaye
-    <section className="relative w-full text-white flex items-center pt-10 sm:pt-16 md:pt-20 pb-10 px-5 sm:px-6 md:px-12 lg:px-24 bg-transparent">
-      {/* Background global radial glow */}
-      <div className="absolute right-[-5%] top-[20%] w-[600px] h-[600px] bg-blue-900/15 rounded-full blur-[150px] pointer-events-none z-0" />
+    <section className="relative w-full md:mt-18 mt-14 lg:mt-4 text-white flex items-center pt-6 sm:pt-10 md:pt-14 lg:pt-20 pb-2 sm:pb-6 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24 bg-transparent min-h-[60vh] md:min-h-[70vh]">
+      {/* Background Glow */}
+      <div className="absolute right-[-10%] md:right-[-6%] top-[12%] md:top-[18%] w-[280px] sm:w-[420px] md:w-[500px] lg:w-[600px] h-[280px] sm:h-[420px] md:h-[500px] lg:h-[600px] bg-blue-900/15 rounded-full blur-[90px] sm:blur-[120px] md:blur-[140px] pointer-events-none z-0" />
 
-      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-4 items-center relative z-10">
-        {/* Left Side: Content & Stats */}
-        <div className="lg:col-span-6 flex flex-col justify-center items-start text-left">
-          <h1 className="mt-25 font-manrope text-4xl sm:text-5xl md:text-6xl lg:text-[68px] font-medium tracking-tight leading-[1.12] mb-6">
+      <div className="relative z-10 max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 md:gap-6 lg:gap-8 items-center">
+        {/* Left Content */}
+        <div className="md:col-span-1 lg:col-span-7 xl:col-span-6 flex flex-col justify-center items-start text-left">
+          <h1 className="font-manrope text-4xl sm:text-4xl md:text-[42px] lg:text-[56px] xl:text-[68px] font-medium tracking-tight leading-[1.15] mb-5">
             Take Control
             <br />
             <span className="text-white">of </span>
-            <span className="text-transparent font-semibold bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400 font-semibold">
               Every Expense.
             </span>
           </h1>
 
-          <p className="font-lato text-[#FFFFFFE5] text-[15px] sm:text-[16px] md:text-[17px] font-normal leading-relaxed max-w-xl mb-8 md:mb-10">
+          <p className="font-lato text-white/90 text-sm sm:text-[15px] md:text-[15px] lg:text-[17px] leading-relaxed max-w-md md:max-w-lg lg:max-w-xl mb-8">
             {data.description}
           </p>
 
-          {/* Download Buttons */}
-          <div className="flex flex-nowrap justify-center sm:justify-start mb-8 items-center gap-2 sm:gap-3">
+          {/* Store Buttons */}
+          <div className="flex flex-nowrap justify-center md:justify-start items-center gap-3 w-full overflow-x-auto pb-2 mb-8">
             {/* Google Play */}
             <Link
               href={data.playStoreUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="
-      flex items-center justify-center gap-2
-      w-[124px] sm:w-[155px] md:w-[170px]
-      h-[44px] sm:h-[48px] md:h-[54px]
-      px-2.5 sm:px-3
-      bg-black
-      border border-white
-      rounded-lg
-      hover:bg-neutral-900
-      transition-all duration-200
-      hover:scale-[1.03]
-      flex-shrink-0
-    "
+              className="flex items-center justify-center gap-2 flex-shrink-0 min-w-[135px] md:min-w-[145px] lg:min-w-[170px] h-[46px] lg:h-[54px] px-3 bg-black border border-white/80 rounded-lg hover:bg-neutral-900 hover:border-white transition-all duration-300 hover:scale-[1.03]"
             >
-              <div className="relative w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 shrink-0">
+              <div className="relative w-5 h-5 lg:w-6 lg:h-6 shrink-0">
                 <Image
                   src={data.playStoreBadge}
                   alt="Google Play"
@@ -63,10 +50,10 @@ const Hero: React.FC<HeroProps> = ({ data = HERO_DATA }) => {
               </div>
 
               <div className="leading-none">
-                <p className="text-[7px] sm:text-[8px] text-white uppercase tracking-wider">
+                <p className="text-[8px] uppercase tracking-wider text-white">
                   Get it on
                 </p>
-                <p className="text-[10px] sm:text-[12px] md:text-[16px] font-medium text-white">
+                <p className="text-[12px] lg:text-[16px] font-medium whitespace-nowrap">
                   Google Play
                 </p>
               </div>
@@ -77,21 +64,9 @@ const Hero: React.FC<HeroProps> = ({ data = HERO_DATA }) => {
               href={data.appStoreUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="
-      flex items-center justify-center gap-2
-      w-[124px] sm:w-[155px] md:w-[170px]
-      h-[44px] sm:h-[48px] md:h-[54px]
-      px-2.5 sm:px-3
-      bg-black
-      border border-white
-      rounded-lg
-      hover:bg-neutral-900
-      transition-all duration-200
-      hover:scale-[1.03]
-      flex-shrink-0
-    "
+              className="flex items-center justify-center gap-2 flex-shrink-0 min-w-[135px] md:min-w-[145px] lg:min-w-[170px] h-[46px] lg:h-[54px] px-3 bg-black border border-white/80 rounded-lg hover:bg-neutral-900 hover:border-white transition-all duration-300 hover:scale-[1.03]"
             >
-              <div className="relative w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 shrink-0">
+              <div className="relative w-5 h-5 lg:w-6 lg:h-6 shrink-0">
                 <Image
                   src={data.appStoreBadge}
                   alt="App Store"
@@ -101,27 +76,28 @@ const Hero: React.FC<HeroProps> = ({ data = HERO_DATA }) => {
               </div>
 
               <div className="leading-none">
-                <p className="text-[7px] sm:text-[8px] text-white tracking-wider">
+                <p className="text-[8px] tracking-wider text-white">
                   Download on the
                 </p>
-                <p className="text-[10px] sm:text-[12px] md:text-[16px] font-medium text-white">
+                <p className="text-[12px] lg:text-[16px] font-medium whitespace-nowrap">
                   App Store
                 </p>
               </div>
             </Link>
           </div>
 
-          <div className="grid grid-cols-3 gap-2 sm:gap-5 md:gap-8 w-full">
+          {/* Stats */}
+          <div className="grid grid-cols-3 gap-4 md:gap-5 lg:gap-8 w-full max-w-md md:max-w-full">
             {data.stats.map((stat, idx) => (
               <div
                 key={idx}
-                className="flex flex-col items-center sm:items-start text-center sm:text-left"
+                className="flex flex-col items-center md:items-start text-center md:text-left"
               >
-                <span className="text-[8px] sm:text-[10px] uppercase text-white/70">
+                <span className="text-[8px] md:text-[9px] lg:text-[10px] uppercase tracking-wider text-white/70">
                   {stat.label}
                 </span>
 
-                <span className="text-[11px] sm:text-base font-bold text-white break-words">
+                <span className="text-[10px] md:text-[12px]  md:font-semibold font-semibold lg:font-bold lg:text-[14px] xl:font-bold xl:text-lg text-white">
                   {stat.value}
                 </span>
               </div>
@@ -129,22 +105,25 @@ const Hero: React.FC<HeroProps> = ({ data = HERO_DATA }) => {
           </div>
         </div>
 
-        {/* Right Side Mocks */}
-        <div className="lg:col-span-6 relative w-full h-[320px] sm:h-[420px] md:h-[580px] lg:h-[650px] flex items-start justify-center lg:justify-end">
+        {/* Right Image */}
+        <div className="hidden md:flex md:col-span-1 lg:col-span-5 xl:col-span-6 justify-center lg:justify-end relative">
+          {/* Glow */}
           <div
-            className="absolute w-[350px] h-[350px] sm:w-[480px] sm:h-[480px] lg:w-[480px] lg:h-[380px] rounded-full blur-[130px] opacity-[0.30] pointer-events-none z-0 right-[-5%] top-[4%] sm:right-[-3%] lg:right-[-22%] lg:top-[15%]"
+            className="absolute w-[300px] h-[300px] md:w-[340px] md:h-[340px] lg:w-[470px] lg:h-[470px] rounded-full blur-[110px] opacity-30 pointer-events-none top-10 lg:top-20 right-0 lg:right-[-20%]"
             style={{
               background: "linear-gradient(135deg, #4FD1FF 0%, #6C63FE 100%)",
             }}
           />
-          <div className="relative w-full h-full max-w-[550px] lg:max-w-none lg:w-[115%]  lg:h-[115%] transition-transform duration-500 ease-out hover:scale-[1.01] z-10">
+
+          {/* Image */}
+          <div className="relative w-full h-[420px] lg:h-[500px] xl:h-[600px] z-10 transition-transform duration-500 hover:scale-[1.02]">
             <Image
               src={data.heroImage}
               alt="Expense Tracker Mobile Experience"
               fill
               priority
-              className="object-contain lg:object-right-top"
-              sizes="(max-width: 1024px) 100vw, 700px"
+              className="object-contain md:object-right lg:object-right-top"
+              sizes="(max-width:768px) 50vw, (max-width:1024px) 45vw, 700px"
             />
           </div>
         </div>

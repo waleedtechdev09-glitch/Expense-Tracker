@@ -9,15 +9,18 @@ const FAQs = () => {
 
   return (
     // px-20 → responsive px-5 sm:px-8 md:px-12 lg:px-20 (mobile pe content ka saans lene ki jagah)
-    <section id="faqs" className=" lg:py-0 py-10 px-5 sm:px-8 md:px-12 lg:px-20">
+    <section
+      id="faqs"
+      className=" lg:py-0 py-10 px-5 sm:px-8 md:px-12 lg:px-20"
+    >
       <div className="max-w-6xl mx-auto">
         {/* Heading */}
         <div className="text-center">
-          <h2 className=" font-manrope text-2xl sm:text-3xl md:text-5xl font-medium text-white leading-tight">
+          <h2 className=" font-manrope text-start text-4xl sm:text-3xl md:text-5xl font-medium text-white leading-tight">
             Frequently Asked <span className="text-cyan-400">Questions</span>
           </h2>
 
-          <p className="font-lato text-gray-300 mt-4 sm:mt-5 max-w-2xl mx-auto text-sm md:text-lg leading-relaxed px-2 sm:px-0">
+          <p className="font-lato text-start text-gray-300 mt-4 sm:mt-5 max-w-2xl mx-auto text-sm md:text-lg leading-relaxed px-2 sm:px-0">
             Find answers to your questions right here, and don't hesitate to
             Contact us if you couldn't find what you're looking for.
           </p>

@@ -110,12 +110,12 @@ const Finances = () => {
         className="pointer-events-none absolute
           -bottom-6 -right-10
           sm:-bottom-8 sm:-right-8
-          md:-bottom-10 md:-right-6
-          lg:-bottom-10 lg:-right-25
+          md:-bottom-10 md:-right-30
+          lg:-bottom-10 lg:-right-28
           z-20
           w-[180px] h-[180px]
           sm:w-[200px] sm:h-[200px]
-          md:w-[300px] md:h-[300px]
+          md:w-[350px] md:h-[350px]
           lg:w-[400px] lg:h-[400px]
           opacity-90"
       >
@@ -123,7 +123,7 @@ const Finances = () => {
           src={data.decorImage}
           alt=""
           fill
-          className=" lg:block hidden object-contain rotate-[270.85deg]"
+          className=" md:block hidden object-contain rotate-[270.85deg]"
         />
       </div>
     </section>
