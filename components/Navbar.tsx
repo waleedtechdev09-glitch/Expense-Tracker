@@ -37,7 +37,8 @@ const Navbar: React.FC<NavbarProps> = ({
       const sectionToTab: Record<string, string> = {
         features: "#features",
         "ai-features": "#features",
-        rating: "#rating",
+        rating: "#features",
+        reviews: "#reviews",
         pricing: "#pricing",
         faqs: "#faqs",
       };
@@ -54,7 +55,7 @@ const Navbar: React.FC<NavbarProps> = ({
         }
       });
 
-      setActiveTab((prev) => current || prev);
+      setActiveTab(current);
     };
 
     const onScroll = () => {
@@ -178,9 +179,6 @@ const Navbar: React.FC<NavbarProps> = ({
                   className={`transition-colors duration-200 relative py-1 ${linkClass}`}
                 >
                   {item.label}
-                  {isActive && (
-                    <span className="absolute bottom-0 left-0 w-full h-[2px] bg-[#4FD1FF] rounded-full" />
-                  )}
                 </a>
               </li>
             );

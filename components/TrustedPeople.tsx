@@ -43,7 +43,7 @@ const testimonials = [
 
 const TrustedPeople = () => {
   return (
-    <section className="relative overflow-hidden lg:py-20 xl:py-16 md:py-14 py-10">
+    <section id="reviews" className="relative overflow-hidden lg:py-20 xl:py-16 md:py-14 py-10">
       <div className="relative max-w-7xl mx-auto px-5">
         {/* Heading - Left aligned on mobile, center on larger screens */}
         <div className="text-left md:text-center mb-14">

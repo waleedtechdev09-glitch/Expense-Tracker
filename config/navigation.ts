@@ -18,6 +18,6 @@ export const BRAND_INFO: BrandConfig = {
 export const NAV_ITEMS: NavItem[] = [
   { label: "Features", href: "#features" },
   { label: "Pricing", href: "#pricing" },
-  { label: "Reviews", href: "#rating" },
+  { label: "Reviews", href: "#reviews" },
   { label: "FAQs", href: "#faqs" },
 ];
