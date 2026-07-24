@@ -32,15 +32,25 @@ const Hero: React.FC<HeroProps> = ({ data = HERO_DATA }) => {
           </p>
 
           {/* Store Buttons */}
-          <div className="flex flex-nowrap mb-6 justify-center md:justify-start items-center gap-3 w-full max-w-md">
+          <div className="flex flex-row flex-nowrap items-center justify-center xl:justify-start gap-3 mb-6 md:mb-10 w-full max-w-md">
             {/* Google Play */}
             <Link
               href={data.playStoreUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 flex-shrink-0 min-w-[135px] md:min-w-[145px] lg:min-w-[170px] h-[46px] lg:h-[54px] px-3 bg-black border border-white/80 rounded-lg hover:bg-neutral-900 hover:border-white transition-all duration-300 hover:scale-[1.03] overflow-hidden"
+              className="flex items-center justify-center gap-2 sm:gap-3
+                w-[150px] sm:w-[160px]
+                h-[44px] sm:h-[48px]
+                px-2 sm:px-3
+                bg-black
+                border border-white
+                rounded-lg
+                hover:bg-neutral-900
+                transition-all duration-200
+                hover:scale-[1.03]
+                select-none overflow-hidden"
             >
-              <div className="relative w-5 h-5 lg:w-6 lg:h-6 shrink-0">
+              <div className="relative w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 shrink-0">
                 <img
                   src={data.playStoreBadge}
                   alt="Google Play"
@@ -48,13 +58,13 @@ const Hero: React.FC<HeroProps> = ({ data = HERO_DATA }) => {
                 />
               </div>
 
-              <div className="leading-none">
-                <p className="text-[8px] uppercase tracking-wider text-white">
+              <div className="flex flex-col items-start leading-none min-w-0">
+                <span className="text-[7px] sm:text-[8px] uppercase tracking-wider font-medium text-white">
                   Get it on
-                </p>
-                <p className="text-[12px] lg:text-[16px] font-medium whitespace-nowrap">
+                </span>
+                <span className="text-[10px] sm:text-[12px] md:text-[16px] font-medium font-manrope text-white mt-[2px] truncate">
                   Google Play
-                </p>
+                </span>
               </div>
             </Link>
 
@@ -63,9 +73,19 @@ const Hero: React.FC<HeroProps> = ({ data = HERO_DATA }) => {
               href={data.appStoreUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 flex-shrink-0 min-w-[135px] md:min-w-[145px] lg:min-w-[170px] h-[46px] lg:h-[54px] px-3 bg-black border border-white/80 rounded-lg hover:bg-neutral-900 hover:border-white transition-all duration-300 hover:scale-[1.03] overflow-hidden"
+              className="flex items-center justify-center gap-2 sm:gap-3
+                w-[150px] sm:w-[160px]
+                h-[44px] sm:h-[48px]
+                px-2 sm:px-3
+                bg-black
+                border border-white
+                rounded-lg
+                hover:bg-neutral-900
+                transition-all duration-200
+                hover:scale-[1.03]
+                select-none overflow-hidden"
             >
-              <div className="relative w-5 h-5 lg:w-6 lg:h-6 shrink-0">
+              <div className="relative w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 shrink-0">
                 <img
                   src={data.appStoreBadge}
                   alt="App Store"
@@ -73,13 +93,13 @@ const Hero: React.FC<HeroProps> = ({ data = HERO_DATA }) => {
                 />
               </div>
 
-              <div className="leading-none">
-                <p className="text-[8px] tracking-wider text-white">
+              <div className="flex flex-col items-start leading-none min-w-0">
+                <span className="text-[7px] sm:text-[8px] tracking-wider font-medium text-white">
                   Download on the
-                </p>
-                <p className="text-[12px] lg:text-[16px] font-medium whitespace-nowrap">
+                </span>
+                <span className="text-[10px] sm:text-[12px] md:text-[16px] font-medium font-manrope text-white mt-[2px] truncate">
                   App Store
-                </p>
+                </span>
               </div>
             </Link>
           </div>

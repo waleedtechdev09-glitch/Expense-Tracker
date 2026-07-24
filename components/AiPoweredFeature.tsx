@@ -97,16 +97,14 @@ const AiPoweredFeature = () => {
             </div>
 
             {/* App Badges Container */}
-            <div className="flex flex-row flex-nowrap lg:px-14 items-center justify-start gap-2 sm:gap-3 mb-10 md:mb-14 w-full">
+            <div className="flex flex-row flex-nowrap lg:px-14 items-center justify-center xl:justify-start gap-3 mb-10 md:mb-14 w-full">
               {/* Google Play Button */}
               <Link
                 href={data.playStoreUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-1.5 sm:gap-2.5
-                  flex-1 min-w-0
-                  sm:flex-none sm:w-[150px] md:w-[160px]
-                  max-w-[160px]
+                className="flex items-center justify-center gap-2 sm:gap-3
+                  w-[150px] sm:w-[160px]
                   h-[44px] sm:h-[48px]
                   px-2 sm:px-3
                   bg-black
@@ -141,10 +139,8 @@ const AiPoweredFeature = () => {
                 href={data.appStoreUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-1.5 sm:gap-2.5
-                  flex-1 min-w-0
-                  sm:flex-none sm:w-[150px] md:w-[160px]
-                  max-w-[160px]
+                className="flex items-center justify-center gap-2 sm:gap-3
+                  w-[150px] sm:w-[160px]
                   h-[44px] sm:h-[48px]
                   px-2 sm:px-3
                   bg-black

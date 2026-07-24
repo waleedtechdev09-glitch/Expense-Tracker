@@ -290,7 +290,7 @@ const PowerfulFeature = () => {
         </div>
 
         {/* Bottom CTA Buttons Section */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8 md:mt-10 w-full relative z-30">
+        <div className="flex flex-col sm:flex-row items-center justify-center xl:justify-start gap-4 mt-8 md:mt-10 w-full relative z-30">
           <button className="flex items-center justify-center gap-2 px-8 h-12 rounded-full cursor-pointer bg-white text-[#081B3A] text-sm font-medium font-lato hover:bg-slate-100 transition-all duration-300 hover:scale-105 shadow-lg w-full sm:w-auto">
             <span>Download App</span>
             <Download size={15} strokeWidth={2.5} />
