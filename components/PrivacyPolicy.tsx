@@ -341,9 +341,14 @@ export default function PrivacyPolicy() {
       }
     };
 
-    measure();
+    // Use setTimeout to ensure layout is complete
+    const timeoutId = setTimeout(measure, 100);
+    measure(); // First measurement
     window.addEventListener("resize", measure);
-    return () => window.removeEventListener("resize", measure);
+    return () => {
+      window.removeEventListener("resize", measure);
+      clearTimeout(timeoutId);
+    };
   }, []);
 
   // Decide sidebar mode: static -> fixed -> absolute-bottom (unlocks before footer)
@@ -398,7 +403,7 @@ export default function PrivacyPolicy() {
             position: "absolute",
             bottom: BOTTOM_SAFE_GAP,
             left: 0,
-            width: "100%",
+            width: sidebarBox.width, // Changed from "100%" to sidebarBox.width
           }
         : {};
 
