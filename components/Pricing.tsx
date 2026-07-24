@@ -1,7 +1,21 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
+
+const ArrowRightIcon = () => (
+  <svg
+    width="18"
+    height="18"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M5 12h14M12 5l7 7-7 7" />
+  </svg>
+);
 
 const Pricing = () => {
   const [yearly, setYearly] = useState(true);
@@ -58,7 +72,7 @@ const Pricing = () => {
 
               <button className="mt-6 sm:mt-8 inline-flex items-center gap-2 rounded-full bg-[#6C63FF] px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base font-medium text-white transition hover:bg-[#5b54ff]">
                 Get Started
-                <ArrowRight size={18} />
+                <ArrowRightIcon />
               </button>
             </div>
 

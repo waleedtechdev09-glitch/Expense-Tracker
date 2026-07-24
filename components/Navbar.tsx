@@ -208,11 +208,11 @@ const Navbar: React.FC<NavbarProps> = ({
 
       {/* Mobile Menu Dropdown */}
       <div
-        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-          mobileMenuOpen
-            ? "max-h-[380px] opacity-100 border-b border-[#374151]/50"
-            : "max-h-0 opacity-0"
-        }`}
+        className="md:hidden overflow-hidden transition-all duration-200 ease-out will-change-[max-height,opacity]"
+        style={{
+          maxHeight: mobileMenuOpen ? "300px" : "0px",
+          opacity: mobileMenuOpen ? 1 : 0,
+        }}
       >
         <div className="bg-[#081B3A]/95 backdrop-blur-xl px-5 py-5 space-y-2">
           {navItems.map((item) => {

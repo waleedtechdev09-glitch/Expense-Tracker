@@ -32,20 +32,19 @@ const Hero: React.FC<HeroProps> = ({ data = HERO_DATA }) => {
           </p>
 
           {/* Store Buttons */}
-          <div className="flex flex-nowrap justify-center md:justify-start items-center gap-3 w-full overflow-x-auto pb-2 mb-8">
+          <div className="flex flex-nowrap mb-6 justify-center md:justify-start items-center gap-3 w-full max-w-md">
             {/* Google Play */}
             <Link
               href={data.playStoreUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 flex-shrink-0 min-w-[135px] md:min-w-[145px] lg:min-w-[170px] h-[46px] lg:h-[54px] px-3 bg-black border border-white/80 rounded-lg hover:bg-neutral-900 hover:border-white transition-all duration-300 hover:scale-[1.03]"
+              className="flex items-center justify-center gap-2 flex-shrink-0 min-w-[135px] md:min-w-[145px] lg:min-w-[170px] h-[46px] lg:h-[54px] px-3 bg-black border border-white/80 rounded-lg hover:bg-neutral-900 hover:border-white transition-all duration-300 hover:scale-[1.03] overflow-hidden"
             >
               <div className="relative w-5 h-5 lg:w-6 lg:h-6 shrink-0">
-                <Image
+                <img
                   src={data.playStoreBadge}
                   alt="Google Play"
-                  fill
-                  className="object-contain"
+                  className="object-contain w-full h-full"
                 />
               </div>
 
@@ -64,14 +63,13 @@ const Hero: React.FC<HeroProps> = ({ data = HERO_DATA }) => {
               href={data.appStoreUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 flex-shrink-0 min-w-[135px] md:min-w-[145px] lg:min-w-[170px] h-[46px] lg:h-[54px] px-3 bg-black border border-white/80 rounded-lg hover:bg-neutral-900 hover:border-white transition-all duration-300 hover:scale-[1.03]"
+              className="flex items-center justify-center gap-2 flex-shrink-0 min-w-[135px] md:min-w-[145px] lg:min-w-[170px] h-[46px] lg:h-[54px] px-3 bg-black border border-white/80 rounded-lg hover:bg-neutral-900 hover:border-white transition-all duration-300 hover:scale-[1.03] overflow-hidden"
             >
               <div className="relative w-5 h-5 lg:w-6 lg:h-6 shrink-0">
-                <Image
+                <img
                   src={data.appStoreBadge}
                   alt="App Store"
-                  fill
-                  className="object-contain"
+                  className="object-contain w-full h-full"
                 />
               </div>
 

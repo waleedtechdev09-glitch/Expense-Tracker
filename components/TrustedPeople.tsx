@@ -1,6 +1,17 @@
 "use client";
 import React from "react";
-import { Star } from "lucide-react";
+
+const StarIcon = () => (
+  <svg
+    width="18"
+    height="18"
+    viewBox="0 0 24 24"
+    fill="#FFC107"
+    className="text-yellow-400"
+  >
+    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z" />
+  </svg>
+);
 
 const testimonials = [
   {
@@ -64,19 +75,14 @@ const TrustedPeople = () => {
             lg:[-webkit-mask-image:linear-gradient(to_bottom,black_0%,black_55%,transparent_100%)]"
         >
           {testimonials.map((item, index) => (
-            <div
-              key={index}
-              className="rounded-3xl border border-white/10 bg-white/[0.03] backdrop-blur-sm p-7 transition duration-300 hover:border-cyan-400/30 "
-            >
+<div
+               key={index}
+               className="rounded-3xl border border-white/10 bg-white/[0.03] backdrop-blur-sm p-7 transition duration-300 hover:border-cyan-400/30"
+             >
               {/* Stars */}
               <div className="flex gap-1 mb-5">
                 {[...Array(5)].map((_, i) => (
-                  <Star
-                    key={i}
-                    size={18}
-                    fill="#FFC107"
-                    className="text-yellow-400"
-                  />
+                  <StarIcon key={i} />
                 ))}
               </div>
 

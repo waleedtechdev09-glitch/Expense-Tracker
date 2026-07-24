@@ -3,11 +3,11 @@ import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
 import Link from "next/link";
 const Footer = () => {
   const links = [
-    { name: "Features", href: "#features" },
-    { name: "Pricing", href: "#pricing" },
-    { name: "Reviews", href: "#reviews" },
+    { name: "Features", href: "/#features" },
+    { name: "Pricing", href: "/#pricing" },
+    { name: "Reviews", href: "/#reviews" },
     { name: "Contact", href: "/contact-us" },
-    { name: "FAQs", href: "#faqs" },
+    { name: "FAQs", href: "/#faqs" },
     { name: "Privacy Policy", href: "/privacy-policy" },
     { name: "Term & Condition", href: "/term-condition" },
   ];
@@ -42,7 +42,11 @@ const Footer = () => {
             <Link
               key={link.name}
               href={link.href}
-              className="text-white hover:text-gray-300 transition duration-300"
+              className={`text-white hover:text-gray-300 transition duration-300 ${
+                link.name === "Privacy Policy" || link.name === "Term & Condition"
+                  ? "underline"
+                  : ""
+              }`}
             >
               {link.name}
             </Link>
@@ -53,21 +57,21 @@ const Footer = () => {
         <div className="mt-8 flex justify-center gap-6">
           <a
             href="#"
-            className="text-gray-300 hover:text-white transition text-lg"
+            className="text-gray-300 hover:text-[#4FD1FF] transition text-lg"
           >
             <FaFacebookF />
           </a>
 
           <a
             href="#"
-            className="text-gray-300 hover:text-white transition text-lg"
+            className="text-gray-300 hover:text-[#4FD1FF] transition text-lg"
           >
             <FaTwitter />
           </a>
 
           <a
             href="#"
-            className="text-gray-300 hover:text-white transition text-lg"
+            className="text-gray-300 hover:text-[#4FD1FF] transition text-lg"
           >
             <FaInstagram />
           </a>

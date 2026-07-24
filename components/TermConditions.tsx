@@ -12,13 +12,14 @@ const sections = [
     id: "accounts",
     title: "User Accounts",
     content:
-      "To access certain features, you may be required to create an account. You are responsible for maintaining the confidentiality of your login credentials and for all activities under your account.",
+      "To access certain features, you may be required to create an account. You are responsible for maintaining the confidentiality of your login credentials and for all activities that occur under your account.",
   },
   {
     id: "acceptable",
     title: "Acceptable Use",
     list: [
-      "Violate applicable laws or regulations.",
+      "You agree to use the application only for lawful purposes. You must not:",
+      " Violate applicable laws or regulations.",
       "Attempt unauthorized access to our systems.",
       "Distribute harmful software or malicious code.",
       "Interfere with the normal operation of the platform.",
@@ -59,13 +60,34 @@ const sections = [
     id: "changes",
     title: "Changes to These Terms",
     content:
-      "We may update these Terms & Conditions from time to time. Continued use of the application constitutes acceptance of the updated terms.",
+      "We may update these Terms & Conditions from time to time. Any changes will become effective upon publication on this page. Continued use of the application constitutes acceptance of the updated terms.",
   },
   {
     id: "contact",
     title: "Contact Information",
-    content:
-      "Questions about your data or these terms? Reach us anytime at info@elexoft.com.",
+    content: (
+      <div className="space-y-2">
+        <p className="text-gray-300 text-normal font-normal font-lato">
+          Questions about your data?
+        </p>
+
+        <p className="text-gray-300 leading-8 max-w-3xl text-normal font-normal font-lato">
+          Have questions about how we collect, use, or protect your personal
+          information? Our team is here to help. Reach out to us, and we'll
+          respond as soon as possible.
+        </p>
+
+        <p className="text-gray-300">
+          Email:{" "}
+          <a
+            href="mailto:info@elexoft.com"
+            className="  underline-offset-2 hover:text-cyan-300 transition"
+          >
+            info@elexoft.com
+          </a>
+        </p>
+      </div>
+    ),
   },
 ];
 
@@ -165,11 +187,13 @@ export default function TermConditions() {
                   {section.title}
                 </h2>
 
-                {section.content && (
+                {section.content && typeof section.content === "string" && (
                   <p className="text-gray-300 text-sm sm:text-lg leading-7 sm:leading-8">
                     {section.content}
                   </p>
                 )}
+
+                {React.isValidElement(section.content) && section.content}
 
                 {section.list && (
                   <ul className="list-disc ml-4 sm:ml-6 mt-3 sm:mt-4 space-y-1.5 sm:space-y-2 text-gray-300 text-sm sm:text-base">
