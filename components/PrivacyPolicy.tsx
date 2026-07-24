@@ -325,7 +325,7 @@ export default function PrivacyPolicy() {
 
         if (intersectingEntries.length === 0) {
           // If nothing is intersecting, find the closest section
-          let closestEntry = null;
+          let closestEntry = null as IntersectionObserverEntry | null;
           let closestDistance = Infinity;
 
           entries.forEach((entry) => {
@@ -347,7 +347,7 @@ export default function PrivacyPolicy() {
         }
 
         // Find the section that's most visible in the viewport
-        let bestEntry = null;
+        let bestEntry = null as IntersectionObserverEntry | null;
         let bestScore = -1;
 
         intersectingEntries.forEach((entry) => {
