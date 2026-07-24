@@ -28,11 +28,12 @@ const Pricing = () => {
         />
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-5 z-10">
+      <div className="relative mx-auto max-w-7xl px-5 z-10 -mt-10 md:mt-8 lg:mt-0">
         {/* Heading - Left aligned on mobile, center on larger screens */}
         <div className="text-left md:text-center mb-14">
-          <h2 className="text-4xl md:text-5xl font-medium text-white font-manrope">
-            Honest and Thoughtful <span className="text-cyan-400">Pricing</span>
+          <h2 className="text-4xl md:text-4xl font-medium text-white font-manrope">
+            Honest and Thoughtful{" "}
+            <span className="text-cyan-400 font-bold">Pricing</span>
           </h2>
 
           <p className="mt-4 text-gray-300 text-base md:text-xl font-lato">

@@ -80,9 +80,9 @@ const PowerfulFeature = () => {
         />
       </div>
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-7xl mx-auto relative z-10 mt-8 md:mt-0 lg:mt-0 xl:mt-0">
         {/* Header Section - Left aligned on mobile, center on larger screens */}
-        <div className="text-left md:text-center max-w-3xl mx-auto mb-0 md:mb-6">
+        <div className="text-left md:text-center max-w-3xl mx-auto mb-0 md:mb-2 lg:mb-8 xl:mb-8">
           <h2 className="font-manrope text-4xl sm:text-4xl md:text-4xl font-extra-bold tracking-tight mb-3 leading-tight">
             Powerful{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400 font-semibold">

@@ -34,14 +34,15 @@ const AiPoweredFeature = () => {
 
       <div className="max-w-7xl mx-auto w-full relative z-20">
         {/* Header Title Section - Left aligned on all screens */}
-        <div className="text-left max-w-3xl mb-6 sm:mb-10 md:mb-16 lg:mb-24">
-          <h2 className="font-manrope text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight mb-4 leading-tight">
+        <div className="max-w-3xl mx-auto text-left sm:text-center mb-6 sm:mb-10 md:mb-16 lg:mb-24">
+          <h2 className="font-manrope text-4xl sm:text-4xl md:text-4xl font-medium tracking-tight mb-4 leading-tight">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400 font-semibold">
               AI-Powered
             </span>{" "}
             Features
           </h2>
-          <p className="font-lato text-slate-300 text-sm sm:text-base md:text-lg max-w-2xl leading-relaxed">
+
+          <p className="font-lato text-slate-300 text-sm sm:text-base md:text-lg max-w-2xl leading-relaxed sm:mx-auto">
             Let AI simplify expense tracking by instantly processing receipts
             and voice entries.
           </p>
