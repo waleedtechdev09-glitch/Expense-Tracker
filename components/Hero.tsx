@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { HERO_DATA, HeroConfig } from "../config/hero";
 
 interface HeroProps {
@@ -11,7 +12,7 @@ interface HeroProps {
 
 const Hero: React.FC<HeroProps> = ({ data = HERO_DATA }) => {
   return (
-    <section className="relative w-full md:mt-18 mt-18 lg:mt-4 text-white flex items-center pt-6 sm:pt-10 md:pt-14 lg:pt-20 pb-2 sm:pb-6 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24 bg-transparent  md:min-h-[70vh]">
+    <section className="relative w-full md:mt-18 mt-18 lg:mt-4 text-white flex items-center pt-6 sm:pt-10 md:pt-14 lg:pt-20 pb-2 sm:pb-6 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24 bg-transparent md:min-h-[70vh]">
       {/* Background Glow */}
       <div className="absolute right-[-10%] md:right-[-6%] top-[12%] md:top-[18%] w-[280px] sm:w-[420px] md:w-[500px] lg:w-[600px] h-[280px] sm:h-[420px] md:h-[500px] lg:h-[600px] bg-blue-900/15 rounded-full blur-[90px] sm:blur-[120px] md:blur-[140px] pointer-events-none z-0" />
 
@@ -115,7 +116,7 @@ const Hero: React.FC<HeroProps> = ({ data = HERO_DATA }) => {
                   {stat.label}
                 </span>
 
-                <span className="text-[10px] md:text-[12px]  md:font-semibold font-semibold lg:font-bold lg:text-[14px] xl:font-bold xl:text-lg text-white">
+                <span className="text-[10px] md:text-[12px] md:font-semibold font-semibold lg:font-bold lg:text-[14px] xl:font-bold xl:text-lg text-white">
                   {stat.value}
                 </span>
               </div>
@@ -123,8 +124,14 @@ const Hero: React.FC<HeroProps> = ({ data = HERO_DATA }) => {
           </div>
         </div>
 
-        {/* Right Image */}
-        <div className="hidden md:flex md:col-span-1 lg:col-span-5 xl:col-span-6 justify-center lg:justify-end relative">
+        {/* Right Image with Framer Motion */}
+        <motion.div
+          className="hidden md:flex md:col-span-1 lg:col-span-5 xl:col-span-6 justify-center lg:justify-end relative"
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
           {/* Glow */}
           <div
             className="absolute w-[300px] h-[300px] md:w-[340px] md:h-[340px] lg:w-[470px] lg:h-[470px] rounded-full blur-[110px] opacity-30 pointer-events-none top-10 lg:top-20 right-0 lg:right-[-20%]"
@@ -144,7 +151,7 @@ const Hero: React.FC<HeroProps> = ({ data = HERO_DATA }) => {
               sizes="(max-width:768px) 50vw, (max-width:1024px) 45vw, 700px"
             />
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 const ArrowRightIcon = () => (
   <svg
@@ -29,10 +30,14 @@ const Pricing = () => {
         Highlighted Fluid Background Image 
         Positioned absolutely relative to the section, keeping it BEHIND the cards (z-0)
       */}
-      <div
-        className=" hidden lg:block absolute left-[-5%] bottom-[-10%] sm:left-[-2%] sm:bottom-[-8%] md:left-[2%] md:bottom-[-5%] xl:-left-[12%] xl:bottom-[-40%] lg:-left-[16%] lg:bottom-[-30%]
+      <motion.div
+        className="hidden lg:block absolute left-[-5%] bottom-[-10%] sm:left-[-2%] sm:bottom-[-8%] md:left-[2%] md:bottom-[-5%] xl:-left-[12%] xl:bottom-[-40%] lg:-left-[16%] lg:bottom-[-30%]
           w-[220px] h-[220px] sm:w-[280px] sm:h-[280px] md:w-[340px] md:h-[340px] xl:w-[500px] xl:h-[500px] lg:w-[400px] lg:h-[400px]
           pointer-events-none select-none z-0 opacity-90"
+        initial={{ opacity: 0, x: -100 }}
+        whileInView={{ opacity: 0.9, x: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 1, ease: "easeOut" }}
       >
         <Image
           src="/assets/pricing.png" // Reuses the iridescent fluid asset
@@ -40,7 +45,7 @@ const Pricing = () => {
           fill
           className="object-contain"
         />
-      </div>
+      </motion.div>
 
       <div className="relative mx-auto max-w-7xl px-5 z-10 -mt-10 md:mt-8 lg:mt-0">
         {/* Heading - Left aligned on mobile, center on larger screens */}
@@ -77,7 +82,7 @@ const Pricing = () => {
             </div>
 
             {/* Mobile Preview Image — clipped perfectly by the card's rounded bottom border */}
-            <div className="relative w-[240px] h-[180px] sm:w-[300px] sm:h-[220px] md:w-[340px] md:h-[250px]  shrink-0">
+            <div className="relative w-[240px] h-[180px] sm:w-[300px] sm:h-[220px] md:w-[340px] md:h-[250px] shrink-0">
               <Image
                 src="/assets/pricing-phone.png"
                 alt="Smart Expense Tracker Pro Settings Preview"

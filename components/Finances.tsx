@@ -2,6 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 const data = {
   playStoreUrl: "#",
@@ -90,7 +91,7 @@ const Finances = () => {
       </div>
 
       {/* Glow gradient behind the decorative image */}
-      <div
+      <motion.div
         className="pointer-events-none absolute
           -bottom-6 -right-4
           sm:-bottom-8 sm:-right-4
@@ -103,10 +104,14 @@ const Finances = () => {
           lg:w-[400px] lg:h-[400px]
           rounded-full blur-3xl opacity-60
           bg-[radial-gradient(circle_at_center,_rgba(99,102,241,0.6)_0%,_rgba(236,72,153,0.5)_35%,_rgba(56,189,248,0.4)_65%,_transparent_75%)]"
+        initial={{ opacity: 0, x: 100 }}
+        whileInView={{ opacity: 0.6, x: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
       />
 
       {/* Decorative bottom-right image — sibling of the card, so overflow-hidden doesn't clip it */}
-      <div
+      <motion.div
         className="pointer-events-none absolute
           -bottom-6 -right-10
           sm:-bottom-8 sm:-right-8
@@ -118,14 +123,18 @@ const Finances = () => {
           md:w-[350px] md:h-[350px]
           lg:w-[400px] lg:h-[400px]
           opacity-90"
+        initial={{ opacity: 0, x: 100 }}
+        whileInView={{ opacity: 0.9, x: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
       >
         <Image
           src={data.decorImage}
           alt=""
           fill
-          className=" md:block hidden object-contain rotate-[270.85deg]"
+          className="md:block hidden object-contain rotate-[270.85deg]"
         />
-      </div>
+      </motion.div>
     </section>
   );
 };

@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const ContactUs = () => {
   return (
@@ -80,13 +81,19 @@ const ContactUs = () => {
           </div>
 
           {/* Right Side - Only Visible on Large Screens */}
-          <div className="hidden lg:flex justify-end items-center">
+          <motion.div
+            className="hidden lg:flex justify-end items-center"
+            initial={{ opacity: 0, x: 100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.9, ease: "easeOut" }}
+          >
             <img
               src="/assets/illustration.png"
               alt="Contact Illustration"
               className="w-[420px] xl:w-[500px] h-auto object-contain"
             />
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

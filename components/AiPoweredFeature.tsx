@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 const data = {
   playStoreUrl: "#",
@@ -15,13 +16,25 @@ const AiPoweredFeature = () => {
   return (
     <section
       id="ai-features"
-      className="relative w-full  text-white lg:py-16 py-10 px-6 md:px-16 lg:px-24 overflow-visible flex items-center"
+      className="relative w-full text-white lg:py-16 py-10 px-6 md:px-16 lg:px-24 overflow-visible flex items-center"
     >
       {/* Gradient glow behind the fluid shape */}
-      <div className="hidden lg:block absolute lg:-right-[20%] lg:-top-[18%] w-[550px] h-[550px] rounded-full blur-3xl opacity-50 pointer-events-none select-none z-10 bg-[radial-gradient(circle_at_center,_rgba(56,189,248,0.55)_0%,_rgba(99,102,241,0.45)_35%,_rgba(236,72,153,0.35)_65%,_transparent_100%)]" />
+      <motion.div
+        className="hidden lg:block absolute lg:-right-[20%] lg:-top-[18%] w-[550px] h-[550px] rounded-full blur-3xl opacity-50 pointer-events-none select-none z-10 bg-[radial-gradient(circle_at_center,_rgba(56,189,248,0.55)_0%,_rgba(99,102,241,0.45)_35%,_rgba(236,72,153,0.35)_65%,_transparent_100%)]"
+        initial={{ opacity: 0, x: 100 }}
+        whileInView={{ opacity: 0.5, x: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
+      />
 
       {/* Top Right Abstract Fluid Shape Asset */}
-      <div className="hidden lg:block absolute lg:-right-[30%] lg:-top-[16%] xl:-right-[20%] xl:-top-[13%] w-[550px] h-[550px] pointer-events-none select-none z-30 opacity-90 mix-blend-screen">
+      <motion.div
+        className="hidden lg:block absolute lg:-right-[30%] lg:-top-[16%] xl:-right-[20%] xl:-top-[13%] w-[550px] h-[550px] pointer-events-none select-none z-30 opacity-90 mix-blend-screen"
+        initial={{ opacity: 0, x: 100 }}
+        whileInView={{ opacity: 0.9, x: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
+      >
         <Image
           src="/assets/fluid.png"
           alt="Abstract Decorative Fluid"
@@ -30,7 +43,7 @@ const AiPoweredFeature = () => {
           className="object-contain"
           priority
         />
-      </div>
+      </motion.div>
 
       <div className="max-w-7xl mx-auto w-full relative z-20">
         {/* Header Title Section - Left aligned on all screens */}
@@ -173,7 +186,13 @@ const AiPoweredFeature = () => {
           </div>
 
           {/* RIGHT SIDE: Phone Mockups - Hidden on mobile, visible on tablet and above */}
-          <div className="hidden md:flex lg:col-span-7 items-center justify-center lg:justify-end relative mt-6 lg:mt-0">
+          <motion.div
+            className="hidden md:flex lg:col-span-7 items-center justify-center lg:justify-end relative mt-6 lg:mt-0"
+            initial={{ opacity: 0, x: 100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.9, ease: "easeOut", delay: 0.1 }}
+          >
             <div
               className="
                 relative
@@ -198,7 +217,7 @@ const AiPoweredFeature = () => {
                 sizes="(max-width: 640px) 320px, (max-width: 768px) 480px, (max-width: 1024px) 600px, 900px"
               />
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

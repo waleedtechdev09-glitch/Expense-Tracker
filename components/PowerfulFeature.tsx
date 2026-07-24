@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { Download, Play } from "lucide-react";
+import { motion } from "framer-motion";
 
 // ==================== LEFT SIDE FEATURES ====================
 const LEFT_FEATURE_1_HEADING = "Total Balance";
@@ -32,8 +33,14 @@ const PowerfulFeature = () => {
       id="features"
       className="relative w-full min-h-screen text-white pb-16 md:pb-10 pt-0 md:pt-8 px-6 md:px-16 lg:px-24"
     >
-      {/* 3D Sphere Orb Asset */}
-      <div className="hidden lg:block absolute left-[-40px] sm:left-[-30px] lg:left-[-180px] -top-[8%] sm:-top-[15%] md:-top-[10%] md:left-[-10%] lg:-top-[14%] xl:-top-[20%] w-[240px] h-[240px] sm:w-[380px] sm:h-[380px] lg:w-[400px] lg:h-[400px] xl:w-[500px] xl:h-[500px] pointer-events-none z-20">
+      {/* 3D Sphere Orb Asset with Framer Motion */}
+      <motion.div
+        className="hidden lg:block absolute left-[-40px] sm:left-[-30px] lg:left-[-180px] -top-[8%] sm:-top-[15%] md:-top-[10%] md:left-[-10%] lg:-top-[14%] xl:-top-[20%] w-[240px] h-[240px] sm:w-[380px] sm:h-[380px] lg:w-[400px] lg:h-[400px] xl:w-[500px] xl:h-[500px] pointer-events-none z-20"
+        initial={{ opacity: 0, x: -100 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 1, ease: "easeOut" }}
+      >
         <div
           className="
       absolute
@@ -52,7 +59,7 @@ const PowerfulFeature = () => {
           priority
           className="object-contain relative z-10"
         />
-      </div>
+      </motion.div>
 
       <div className="max-w-7xl mx-auto relative z-10 mt-8 md:mt-0 lg:mt-0 xl:mt-0">
         {/* Header Section */}
@@ -106,7 +113,13 @@ const PowerfulFeature = () => {
           </div>
 
           {/* ==================== CENTER MOBILE MOCKUP (desktop/tablet only) ==================== */}
-          <div className="hidden md:col-span-4 md:flex justify-center relative order-1 md:order-2 md:my-0">
+          <motion.div
+            className="hidden md:col-span-4 md:flex flex-col items-center justify-center relative order-1 md:order-2 md:my-0"
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
+          >
             {/* SVG Connector Lines */}
             <div className="hidden md:block absolute inset-0 -mx-6 md:-mx-8 lg:-mx-12 xl:-mx-16 w-[calc(100%+48px)] md:w-[calc(100%+64px)] lg:w-[calc(100%+96px)] xl:w-[calc(100%+128px)] h-full pointer-events-none z-0">
               <svg
@@ -263,7 +276,20 @@ const PowerfulFeature = () => {
                 sizes="(max-width: 1024px) 190px, (max-width: 1280px) 260px, 310px"
               />
             </div>
-          </div>
+
+            {/* Bottom CTA Buttons - Now inside the same column as mobile */}
+            <div className="flex flex-row items-center justify-center gap-4 mt-6 md:mt-8 w-full relative z-30">
+              <button className="flex items-center justify-center gap-2 px-6 md:px-8 h-10 md:h-12 rounded-full cursor-pointer bg-white text-[#081B3A] text-xs md:text-sm font-medium font-lato hover:bg-slate-100 transition-all duration-300 hover:scale-105 shadow-lg">
+                <span>Download App</span>
+                <Download size={14} strokeWidth={2.5} />
+              </button>
+
+              <button className="flex items-center justify-center gap-2 px-6 md:px-8 h-10 md:h-12 rounded-full bg-[#6C63FF] cursor-pointer text-white text-xs md:text-sm font-medium font-lato hover:bg-[#5B54E8] transition-all duration-300 hover:scale-105 shadow-lg">
+                <span>Watch Demo</span>
+                <Play size={12} fill="currentColor" strokeWidth={0} />
+              </button>
+            </div>
+          </motion.div>
 
           {/* ==================== RIGHT SIDE FEATURES (INDEPENDENT) ==================== */}
           <div className="md:col-span-4 relative order-3 flex flex-col gap-8 md:gap-0 min-h-0 md:min-h-[500px] lg:min-h-[600px]">
@@ -289,8 +315,8 @@ const PowerfulFeature = () => {
           </div>
         </div>
 
-        {/* Bottom CTA Buttons Section */}
-        <div className="flex flex-col sm:flex-row items-center justify-center xl:justify-start gap-4 mt-8 md:mt-10 w-full relative z-30">
+        {/* Bottom CTA Buttons Section - Only visible on mobile */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8 md:hidden w-full relative z-30">
           <button className="flex items-center justify-center gap-2 px-8 h-12 rounded-full cursor-pointer bg-white text-[#081B3A] text-sm font-medium font-lato hover:bg-slate-100 transition-all duration-300 hover:scale-105 shadow-lg w-full sm:w-auto">
             <span>Download App</span>
             <Download size={15} strokeWidth={2.5} />
