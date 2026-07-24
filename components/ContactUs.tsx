@@ -4,14 +4,14 @@ const ContactUs = () => {
   return (
     <section className="bg-[#071B3B] mt-10 py-16 lg:py-24">
       <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-14 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
           {/* Left Side */}
           <div>
             <h2 className="font-manrope text-white text-4xl md:text-5xl font-medium">
               Get in Touch
             </h2>
 
-            <p className="font-lato text-gray-300 mt-5 text-normal md:text-normal leading-8 max-w-xl">
+            <p className="font-lato text-gray-300 mt-5 font-normal text-sm md:text-base leading-8 max-w-xl">
               Have questions about Expense Tracker? We'd love to hear from you.
               Fill out the form below, and our team will get back to you as soon
               as possible.
@@ -40,7 +40,7 @@ const ContactUs = () => {
                 <input
                   type="email"
                   placeholder="Enter Email Address"
-                  className="w-full h-12 rounded-md bg-white/10 border border-white/5 px-4 text-white placeholder:text-gray-400 outline-none focus:border-[#6C63FF]"
+                  className="w-full h-12 rounded-md bg-white/10 border border-white/5 px-4 text-white placeholder:text-gray-400 outline-none focus:border-[#6C63FF] transition"
                 />
               </div>
 
@@ -53,7 +53,7 @@ const ContactUs = () => {
                 <input
                   type="text"
                   placeholder="Enter Subject"
-                  className="w-full h-12 rounded-md bg-white/10 border border-white/5 px-4 text-white placeholder:text-gray-400 outline-none focus:border-[#6C63FF]"
+                  className="w-full h-12 rounded-md bg-white/10 border border-white/5 px-4 text-white placeholder:text-gray-400 outline-none focus:border-[#6C63FF] transition"
                 />
               </div>
 
@@ -66,7 +66,7 @@ const ContactUs = () => {
                 <textarea
                   rows={5}
                   placeholder="Enter your message..."
-                  className="w-full rounded-md bg-white/10 border border-white/5 p-4 text-white placeholder:text-gray-400 outline-none resize-none focus:border-[#6C63FF]"
+                  className="w-full rounded-md bg-white/10 border border-white/5 p-4 text-white placeholder:text-gray-400 outline-none resize-none focus:border-[#6C63FF] transition"
                 />
               </div>
 
@@ -79,12 +79,12 @@ const ContactUs = () => {
             </form>
           </div>
 
-          {/* Right Side */}
-          <div className="flex justify-center lg:justify-end">
+          {/* Right Side - Only Visible on Large Screens */}
+          <div className="hidden lg:flex justify-end items-center">
             <img
               src="/assets/illustration.png"
               alt="Contact Illustration"
-              className="w-full max-w-lg object-contain"
+              className="w-[420px] xl:w-[500px] h-auto object-contain"
             />
           </div>
         </div>
