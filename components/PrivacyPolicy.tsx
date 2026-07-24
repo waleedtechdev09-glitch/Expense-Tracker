@@ -297,40 +297,57 @@ const sections = [
   },
 ];
 
-// Sidebar apni jagah lock hone ke baad top se kitna gap rahega
-const FIXED_TOP_OFFSET = 96; // 24 * 4px (top-24)
-// Footer se thora pehle unlock karna ho to yahan extra gap de sakte ho
-const BOTTOM_SAFE_GAP = 24;
-
-type SidebarMode = "static" | "fixed" | "absolute-bottom";
+// Hero (heading + description + date) ke neeche kitna extra gap chahiye
+// jab sidebar wahan lock ho jaye
+const EXTRA_GAP_AFTER_HERO = 24;
 
 export default function PrivacyPolicy() {
   const [active, setActive] = useState("information");
-  const [mode, setMode] = useState<SidebarMode>("static");
-  const [sidebarBox, setSidebarBox] = useState({ left: 0, width: 260 });
 
+  // Sidebar hero ke bilkul khatam hone ke baad lock ho — is height ko
+  // measure karke sticky ka "top" set karte hain.
+  const [stickyTop, setStickyTop] = useState(96);
   const heroRef = useRef<HTMLDivElement>(null);
-  const asideRef = useRef<HTMLDivElement>(null);
-  const innerRef = useRef<HTMLDivElement>(null);
-  const wrapperRef = useRef<HTMLDivElement>(null);
+
+  // Click ke doran observer ko mute karne ke liye
+  const isClickScrolling = useRef(false);
+  const clickTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Hero ki height measure kro — page load aur resize par
+  useEffect(() => {
+    const measureHero = () => {
+      if (heroRef.current) {
+        setStickyTop(heroRef.current.offsetHeight + EXTRA_GAP_AFTER_HERO);
+      }
+    };
+
+    measureHero();
+    const timeoutId = setTimeout(measureHero, 100); // fonts/layout settle hone ka wait
+    window.addEventListener("resize", measureHero);
+
+    return () => {
+      window.removeEventListener("resize", measureHero);
+      clearTimeout(timeoutId);
+    };
+  }, []);
 
   // Section active-link tracking - improved visibility detection
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        // Get all entries that are intersecting
+        // Click ke baad smooth-scroll chal rahi ho to observer ki update ignore kro
+        if (isClickScrolling.current) return;
+
         const intersectingEntries = entries.filter(
           (entry) => entry.isIntersecting,
         );
 
         if (intersectingEntries.length === 0) {
-          // If nothing is intersecting, find the closest section
           let closestEntry = null as IntersectionObserverEntry | null;
           let closestDistance = Infinity;
 
           entries.forEach((entry) => {
             const rect = entry.target.getBoundingClientRect();
-            // If section is below viewport
             if (rect.top > window.innerHeight) {
               const distance = rect.top - window.innerHeight;
               if (distance < closestDistance) {
@@ -346,7 +363,6 @@ export default function PrivacyPolicy() {
           return;
         }
 
-        // Find the section that's most visible in the viewport
         let bestEntry = null as IntersectionObserverEntry | null;
         let bestScore = -1;
 
@@ -355,7 +371,6 @@ export default function PrivacyPolicy() {
           const viewportHeight = window.innerHeight;
           const viewportWidth = window.innerWidth;
 
-          // Calculate visible area
           const visibleTop = Math.max(0, rect.top);
           const visibleBottom = Math.min(viewportHeight, rect.bottom);
           const visibleHeight = Math.max(0, visibleBottom - visibleTop);
@@ -367,13 +382,11 @@ export default function PrivacyPolicy() {
           const totalArea = rect.height * rect.width;
           const visibleRatio = totalArea > 0 ? visibleArea / totalArea : 0;
 
-          // Calculate how centered the section is in the viewport
           const centerOffset = Math.abs(
             rect.top + rect.height / 2 - viewportHeight / 2,
           );
           const normalizedOffset = centerOffset / viewportHeight;
 
-          // Score: higher visible ratio and more centered = better
           const score = visibleRatio * 0.7 + (1 - normalizedOffset) * 0.3;
 
           if (score > bestScore) {
@@ -397,83 +410,26 @@ export default function PrivacyPolicy() {
       if (element) observer.observe(element);
     });
 
-    return () => observer.disconnect();
-  }, []);
-
-  // Measure sidebar column's left/width for the fixed variant
-  useEffect(() => {
-    const measure = () => {
-      if (asideRef.current) {
-        const rect = asideRef.current.getBoundingClientRect();
-        setSidebarBox({ left: rect.left, width: rect.width });
-      }
-    };
-
-    // Use setTimeout to ensure layout is complete
-    const timeoutId = setTimeout(measure, 100);
-    measure(); // First measurement
-    window.addEventListener("resize", measure);
     return () => {
-      window.removeEventListener("resize", measure);
-      clearTimeout(timeoutId);
-    };
-  }, []);
-
-  // Decide sidebar mode: static -> fixed -> absolute-bottom (unlocks before footer)
-  useEffect(() => {
-    const onScroll = () => {
-      if (!heroRef.current || !wrapperRef.current || !innerRef.current) return;
-
-      const heroBottom = heroRef.current.getBoundingClientRect().bottom;
-      const wrapperBottom = wrapperRef.current.getBoundingClientRect().bottom;
-      const sidebarHeight = innerRef.current.offsetHeight;
-
-      const notPastHero = heroBottom > FIXED_TOP_OFFSET;
-      const spaceLeftBelow = wrapperBottom - FIXED_TOP_OFFSET;
-      const wouldOverflowIntoFooter =
-        spaceLeftBelow - BOTTOM_SAFE_GAP <= sidebarHeight;
-
-      if (notPastHero) {
-        setMode("static");
-      } else if (wouldOverflowIntoFooter) {
-        setMode("absolute-bottom");
-      } else {
-        setMode("fixed");
-      }
-    };
-
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
+      observer.disconnect();
+      if (clickTimeoutRef.current) clearTimeout(clickTimeoutRef.current);
     };
   }, []);
 
   const gotoSection = (id: string) => {
+    isClickScrolling.current = true;
+    setActive(id);
+
     document.getElementById(id)?.scrollIntoView({
       behavior: "smooth",
       block: "start",
     });
-  };
 
-  const innerStyle: React.CSSProperties =
-    mode === "fixed"
-      ? {
-          position: "fixed",
-          top: FIXED_TOP_OFFSET,
-          left: sidebarBox.left,
-          width: sidebarBox.width,
-        }
-      : mode === "absolute-bottom"
-        ? {
-            position: "absolute",
-            bottom: BOTTOM_SAFE_GAP,
-            left: 0,
-            width: sidebarBox.width,
-          }
-        : {};
+    if (clickTimeoutRef.current) clearTimeout(clickTimeoutRef.current);
+    clickTimeoutRef.current = setTimeout(() => {
+      isClickScrolling.current = false;
+    }, 900);
+  };
 
   return (
     <section className="bg-[#071B3B] text-white min-h-screen">
@@ -497,13 +453,11 @@ export default function PrivacyPolicy() {
         </div>
 
         {/* Grid layout - sidebar hidden on mobile/tablet, visible on desktop */}
-        <div
-          ref={wrapperRef}
-          className="relative grid grid-cols-1 lg:grid-cols-[260px_1fr] gap-6 sm:gap-10 mt-8 sm:mt-12"
-        >
-          {/* Sidebar - Hidden on small and medium devices, shown on large screens */}
-          <aside ref={asideRef} className="hidden lg:block">
-            <div ref={innerRef} className="space-y-2" style={innerStyle}>
+        <div className="relative grid grid-cols-1 lg:grid-cols-[260px_1fr] gap-6 sm:gap-10 mt-8 sm:mt-12">
+          {/* Sidebar - hero khatam hone ke baad sticky ho kar lock ho jata hai,
+              aur apni column ke content khatam hone se pehle khud unstick ho jata hai */}
+          <aside className="hidden lg:block">
+            <div className="sticky space-y-2" style={{ top: stickyTop }}>
               {sections.map((item) => (
                 <button
                   key={item.id}

@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import { Menu, X } from "lucide-react";
 
 const sections = [
   {
@@ -70,67 +69,38 @@ const sections = [
   },
 ];
 
-// Sidebar apni jagah lock hone ke baad top se kitna gap rahega
-const FIXED_TOP_OFFSET = 96; // 24 * 4px (top-24)
+// Hero (heading + description + date) ke neeche kitna extra gap chahiye
+// jab sidebar wahan lock ho jaye
+const EXTRA_GAP_AFTER_HERO = 24;
 
 export default function TermConditions() {
+  // Active ab sirf click se set hoga — scroll isko change nahi karega.
   const [active, setActive] = useState("acceptance");
-  const [open, setOpen] = useState(false);
-  const [isSidebarFixed, setIsSidebarFixed] = useState(false);
-  const [sidebarBox, setSidebarBox] = useState({ left: 0, width: 260 });
 
-  const heroRef = useRef<HTMLDivElement>(null); // heading + desc + date wrapper
-  const asideRef = useRef<HTMLDivElement>(null); // sidebar column (grid cell)
+  // Sidebar hero ke khatam hone ke baad lock ho jayegi (sticky top)
+  const [stickyTop, setStickyTop] = useState(96);
+  const heroRef = useRef<HTMLDivElement>(null);
 
-  // Section active-link tracking
+  // Hero ki height measure kro — page load aur resize par
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries.find((e) => e.isIntersecting);
-        if (visible) setActive(visible.target.id);
-      },
-      { threshold: 0.3 },
-    );
-
-    sections.forEach((section) => {
-      const element = document.getElementById(section.id);
-      if (element) observer.observe(element);
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
-  // Measure the sidebar column's left position + width so the
-  // "fixed" version lines up exactly with the grid column.
-  useEffect(() => {
-    const measure = () => {
-      if (asideRef.current) {
-        const rect = asideRef.current.getBoundingClientRect();
-        setSidebarBox({ left: rect.left, width: rect.width });
+    const measureHero = () => {
+      if (heroRef.current) {
+        setStickyTop(heroRef.current.offsetHeight + EXTRA_GAP_AFTER_HERO);
       }
     };
 
-    measure();
-    window.addEventListener("resize", measure);
-    return () => window.removeEventListener("resize", measure);
-  }, []);
+    measureHero();
+    const timeoutId = setTimeout(measureHero, 100); // fonts/layout settle hone ka wait
+    window.addEventListener("resize", measureHero);
 
-  // Scroll-driven lock: sidebar becomes fixed only after the hero
-  // (heading + description + date) has fully scrolled past.
-  useEffect(() => {
-    const onScroll = () => {
-      if (!heroRef.current) return;
-      const heroBottom = heroRef.current.getBoundingClientRect().bottom;
-      setIsSidebarFixed(heroBottom <= FIXED_TOP_OFFSET);
+    return () => {
+      window.removeEventListener("resize", measureHero);
+      clearTimeout(timeoutId);
     };
-
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   const gotoSection = (id: string) => {
-    setOpen(false);
+    setActive(id);
     document.getElementById(id)?.scrollIntoView({
       behavior: "smooth",
       block: "start",
@@ -139,51 +109,29 @@ export default function TermConditions() {
 
   return (
     <section className="bg-[#071B3B] text-white min-h-screen">
-      <div className="max-w-7xl mx-auto px-5 py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-5 py-8 sm:py-16">
         {/* Hero: heading + description + date. Sidebar unlocks right after this. */}
         <div ref={heroRef}>
-          <h1 className="text-4xl md:text-5xl font-manrope lg:mt-15 font-medium">
+          <h1 className="text-3xl sm:text-4xl mt-20 sm:mt-14 md:text-[54px] font-medium font-manrope">
             Terms & Conditions
           </h1>
 
-          <p className="mt-6 text-gray-300 text-lg max-w-4xl leading-8">
+          <p className="mt-4 sm:mt-6 text-gray-300 text-sm sm:text-base max-w-5xl leading-7 sm:leading-8 font-lato">
             Please read these Terms & Conditions carefully before using the
             Expense Tracker application. By accessing or using our services, you
             agree to be bound by these terms.
           </p>
 
-          <p className="mt-5 text-xl text-gray-400">
+          <p className="mt-4 sm:mt-5 text-sm sm:text-lg text-[rgba(144,165,202,1)]">
             Effective as of: June 2, 2026
           </p>
         </div>
 
-        {/* Mobile Menu */}
-        <button
-          onClick={() => setOpen(!open)}
-          className="lg:hidden mt-10 bg-white/10 rounded-lg p-3"
-        >
-          {open ? <X /> : <Menu />}
-        </button>
-
-        <div className="grid lg:grid-cols-[260px_1fr] gap-10 mt-12">
-          {/* Sidebar */}
-          <aside
-            ref={asideRef}
-            className={`${open ? "block" : "hidden"} lg:block`}
-          >
-            <div
-              className="space-y-2"
-              style={
-                isSidebarFixed
-                  ? {
-                      position: "fixed",
-                      top: FIXED_TOP_OFFSET,
-                      left: sidebarBox.left,
-                      width: sidebarBox.width,
-                    }
-                  : undefined
-              }
-            >
+        {/* Grid layout - sidebar hidden on mobile/tablet, visible on desktop */}
+        <div className="relative grid grid-cols-1 lg:grid-cols-[260px_1fr] gap-6 sm:gap-10 mt-8 sm:mt-12">
+          {/* Sidebar - Hidden on small and medium devices, shown on large screens */}
+          <aside className="hidden lg:block">
+            <div className="sticky space-y-2" style={{ top: stickyTop }}>
               {sections.map((item) => (
                 <button
                   key={item.id}
@@ -201,24 +149,30 @@ export default function TermConditions() {
             </div>
           </aside>
 
-          {/* Content */}
-          <div>
+          {/* Content - Full width on mobile/tablet */}
+          <div className="min-w-0 lg:col-span-1">
             {sections.map((section) => (
               <section
                 key={section.id}
                 id={section.id}
-                className="scroll-mt-28 border-b border-white/10 pb-10 mb-10"
+                className={`scroll-mt-24 sm:scroll-mt-28 pb-6 sm:pb-10 ${
+                  section.id !== "contact"
+                    ? "border-b border-white/10 mb-6 sm:mb-10"
+                    : ""
+                }`}
               >
-                <h2 className="text-3xl font-semibold mb-6">{section.title}</h2>
+                <h2 className="text-2xl sm:text-3xl font-semibold mb-4 sm:mb-6">
+                  {section.title}
+                </h2>
 
                 {section.content && (
-                  <p className="text-gray-300 leading-8 text-lg">
+                  <p className="text-gray-300 text-sm sm:text-lg leading-7 sm:leading-8">
                     {section.content}
                   </p>
                 )}
 
                 {section.list && (
-                  <ul className="mt-4 list-disc pl-6 space-y-2 text-gray-300 text-lg">
+                  <ul className="list-disc ml-4 sm:ml-6 mt-3 sm:mt-4 space-y-1.5 sm:space-y-2 text-gray-300 text-sm sm:text-base">
                     {section.list.map((item) => (
                       <li key={item}>{item}</li>
                     ))}

@@ -15,7 +15,7 @@ const AiPoweredFeature = () => {
   return (
     <section
       id="ai-features"
-      className="relative w-full min-h-screen text-white lg:py-16 py-10 px-6 md:px-16 lg:px-24 overflow-visible flex items-center"
+      className="relative w-full  text-white lg:py-16 py-10 px-6 md:px-16 lg:px-24 overflow-visible flex items-center"
     >
       {/* Gradient glow behind the fluid shape */}
       <div className="hidden lg:block absolute lg:-right-[20%] lg:-top-[18%] w-[550px] h-[550px] rounded-full blur-3xl opacity-50 pointer-events-none select-none z-10 bg-[radial-gradient(circle_at_center,_rgba(56,189,248,0.55)_0%,_rgba(99,102,241,0.45)_35%,_rgba(236,72,153,0.35)_65%,_transparent_100%)]" />

@@ -11,7 +11,7 @@ interface HeroProps {
 
 const Hero: React.FC<HeroProps> = ({ data = HERO_DATA }) => {
   return (
-    <section className="relative w-full md:mt-18 mt-14 lg:mt-4 text-white flex items-center pt-6 sm:pt-10 md:pt-14 lg:pt-20 pb-2 sm:pb-6 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24 bg-transparent min-h-[60vh] md:min-h-[70vh]">
+    <section className="relative w-full md:mt-18 mt-18 lg:mt-4 text-white flex items-center pt-6 sm:pt-10 md:pt-14 lg:pt-20 pb-2 sm:pb-6 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24 bg-transparent  md:min-h-[70vh]">
       {/* Background Glow */}
       <div className="absolute right-[-10%] md:right-[-6%] top-[12%] md:top-[18%] w-[280px] sm:w-[420px] md:w-[500px] lg:w-[600px] h-[280px] sm:h-[420px] md:h-[500px] lg:h-[600px] bg-blue-900/15 rounded-full blur-[90px] sm:blur-[120px] md:blur-[140px] pointer-events-none z-0" />
 
