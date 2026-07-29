@@ -96,14 +96,11 @@ const sections = [
 const EXTRA_GAP_AFTER_HERO = 24;
 
 export default function TermConditions() {
-  // Active ab sirf click se set hoga — scroll isko change nahi karega.
   const [active, setActive] = useState("acceptance");
 
-  // Sidebar hero ke khatam hone ke baad lock ho jayegi (sticky top)
   const [stickyTop, setStickyTop] = useState(96);
   const heroRef = useRef<HTMLDivElement>(null);
 
-  // Hero ki height measure kro — page load aur resize par
   useEffect(() => {
     const measureHero = () => {
       if (heroRef.current) {
@@ -112,7 +109,7 @@ export default function TermConditions() {
     };
 
     measureHero();
-    const timeoutId = setTimeout(measureHero, 100); // fonts/layout settle hone ka wait
+    const timeoutId = setTimeout(measureHero, 100);
     window.addEventListener("resize", measureHero);
 
     return () => {
@@ -123,6 +120,7 @@ export default function TermConditions() {
 
   const gotoSection = (id: string) => {
     setActive(id);
+
     document.getElementById(id)?.scrollIntoView({
       behavior: "smooth",
       block: "start",
