@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 
 const data = {
   playStoreUrl: "#",
-  playStoreBadge: "/assets/playstore.png",
+  playStoreBadge: "/assets/playStore.png",
   appStoreUrl: "#",
   appStoreBadge: "/assets/apple.png",
 };
