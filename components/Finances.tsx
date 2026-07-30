@@ -36,15 +36,15 @@ const Finances = () => {
           </p>
 
           {/* Store Badges */}
-          <div className="mt-6 sm:mt-8 flex flex-wrap items-center justify-center gap-3">
+          <div className="mt-6 sm:mt-8 flex flex-nowrap items-center justify-center gap-2 sm:gap-3">
             {/* Google Play */}
             <Link
               href={data.playStoreUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 w-[140px] sm:w-[155px] md:w-[170px] h-[44px] sm:h-[48px] md:h-[54px] px-3 bg-black border border-white rounded-lg hover:bg-neutral-900 transition-all duration-200 hover:scale-[1.03]"
+              className="flex items-center gap-1.5 sm:gap-2 w-[125px] sm:w-[155px] md:w-[170px] h-[42px] sm:h-[48px] md:h-[54px] px-2.5 sm:px-3 bg-black border border-white rounded-lg hover:bg-neutral-900 transition-all duration-200 hover:scale-[1.03] shrink-0"
             >
-              <div className="relative w-5 h-5 md:w-6 md:h-6 shrink-0">
+              <div className="relative w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 shrink-0">
                 <Image
                   src={data.playStoreBadge}
                   alt="Google Play"
@@ -53,10 +53,10 @@ const Finances = () => {
                 />
               </div>
               <div className="leading-none">
-                <p className="text-[8px] text-white uppercase tracking-wider">
+                <p className="text-[7px] sm:text-[8px] text-white uppercase tracking-wider">
                   Get it on
                 </p>
-                <p className="text-[12px] md:text-[16px] font-medium text-white">
+                <p className="text-[11px] sm:text-[12px] md:text-[16px] font-medium text-white">
                   Google Play
                 </p>
               </div>
@@ -67,9 +67,9 @@ const Finances = () => {
               href={data.appStoreUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 w-[140px] sm:w-[155px] md:w-[170px] h-[44px] sm:h-[48px] md:h-[54px] px-3 bg-black border border-white rounded-lg hover:bg-neutral-900 transition-all duration-200 hover:scale-[1.03]"
+              className="flex items-center gap-1.5 sm:gap-2 w-[125px] sm:w-[155px] md:w-[170px] h-[42px] sm:h-[48px] md:h-[54px] px-2.5 sm:px-3 bg-black border border-white rounded-lg hover:bg-neutral-900 transition-all duration-200 hover:scale-[1.03] shrink-0"
             >
-              <div className="relative w-5 h-5 md:w-6 md:h-6 shrink-0">
+              <div className="relative w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 shrink-0">
                 <Image
                   src={data.appStoreBadge}
                   alt="App Store"
@@ -78,10 +78,10 @@ const Finances = () => {
                 />
               </div>
               <div className="leading-none">
-                <p className="text-[8px] text-white tracking-wider">
+                <p className="text-[7px] sm:text-[8px] text-white tracking-wider">
                   Download on the
                 </p>
-                <p className="text-[12px] md:text-[16px] font-medium text-white">
+                <p className="text-[11px] sm:text-[12px] md:text-[16px] font-medium text-white">
                   App Store
                 </p>
               </div>

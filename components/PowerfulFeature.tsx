@@ -112,15 +112,15 @@ const PowerfulFeature = () => {
             </div>
           </div>
 
-          {/* ==================== CENTER MOBILE MOCKUP (desktop/tablet only) ==================== */}
+          {/* ==================== CENTER MOBILE MOCKUP (now visible on mobile too) ==================== */}
           <motion.div
-            className="hidden md:col-span-4 md:flex flex-col items-center justify-center relative order-1 md:order-2 md:my-0"
+            className="flex md:col-span-4 flex-col items-center justify-center relative order-1 md:order-2 my-6 md:my-0"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
           >
-            {/* SVG Connector Lines */}
+            {/* SVG Connector Lines (desktop/tablet only) */}
             <div className="hidden md:block absolute inset-0 -mx-6 md:-mx-8 lg:-mx-12 xl:-mx-16 w-[calc(100%+48px)] md:w-[calc(100%+64px)] lg:w-[calc(100%+96px)] xl:w-[calc(100%+128px)] h-full pointer-events-none z-0">
               <svg
                 className="w-full h-full"
@@ -277,8 +277,8 @@ const PowerfulFeature = () => {
               />
             </div>
 
-            {/* Bottom CTA Buttons - Now inside the same column as mobile */}
-            <div className="flex flex-row items-center justify-center gap-4 mt-6 md:mt-8 w-full relative z-30">
+            {/* Bottom CTA Buttons - visible on md+ here (mobile has its own copy below) */}
+            <div className="hidden md:flex flex-row items-center justify-center gap-4 mt-6 md:mt-8 w-full relative z-30">
               <button className="flex items-center justify-center gap-2 px-6 md:px-8 h-10 md:h-12 rounded-full cursor-pointer bg-white text-[#081B3A] text-xs md:text-sm font-medium font-lato hover:bg-slate-100 transition-all duration-300 hover:scale-105 shadow-lg">
                 <span>Download App</span>
                 <Download size={14} strokeWidth={2.5} />

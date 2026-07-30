@@ -32,6 +32,35 @@ const Hero: React.FC<HeroProps> = ({ data = HERO_DATA }) => {
             {data.description}
           </p>
 
+          {/* Mobile-only Image (shows above buttons, hidden on md+) */}
+          <motion.div
+            className="flex md:hidden w-full justify-center relative mb-8"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            {/* Glow */}
+            <div
+              className="absolute w-[220px] h-[220px] sm:w-[260px] sm:h-[260px] rounded-full blur-[90px] opacity-30 pointer-events-none top-6 right-0"
+              style={{
+                background: "linear-gradient(135deg, #4FD1FF 0%, #6C63FE 100%)",
+              }}
+            />
+
+            {/* Image */}
+            <div className="relative w-full h-[340px] sm:h-[400px] z-10">
+              <Image
+                src={data.heroImage}
+                alt="Expense Tracker Mobile Experience"
+                fill
+                priority
+                className="object-contain"
+                sizes="(max-width:640px) 90vw, 70vw"
+              />
+            </div>
+          </motion.div>
+
           {/* Store Buttons */}
           <div className="flex flex-row flex-nowrap items-center justify-center xl:justify-start gap-3 mb-6 md:mb-10 w-full max-w-md">
             {/* Google Play */}
@@ -124,7 +153,7 @@ const Hero: React.FC<HeroProps> = ({ data = HERO_DATA }) => {
           </div>
         </div>
 
-        {/* Right Image with Framer Motion */}
+        {/* Right Image (Desktop/Tablet only) with Framer Motion */}
         <motion.div
           className="hidden md:flex md:col-span-1 lg:col-span-5 xl:col-span-6 justify-center lg:justify-end relative"
           initial={{ opacity: 0, x: 50 }}

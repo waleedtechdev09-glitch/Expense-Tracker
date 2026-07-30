@@ -35,7 +35,7 @@ export default function RootLayout({
       lang="en"
       className={`${manrope.variable} ${lato.variable} overflow-x-hidden`}
     >
-      <body className="min-h-screen bg-[#081B3A] text-slate-100 flex flex-col font-sans relative overflow-x-hidden">
+      <body className="min-h-screen bg-[#081B3A] text-slate-100 flex flex-col font-sans relative overflow-x-hidden" suppressHydrationWarning>
         {/* Header/Navbar Section */}
         <Navbar />
 

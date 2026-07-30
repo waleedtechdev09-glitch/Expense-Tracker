@@ -109,6 +109,34 @@ const AiPoweredFeature = () => {
               </div>
             </div>
 
+            {/* Mobile-only Phone Mockup (shows above app badges, hidden on md+) */}
+            <motion.div
+              className="flex md:hidden items-center justify-center relative w-full"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              <div
+                className="
+                  relative
+                  w-full
+                  max-w-[320px] sm:max-w-[380px]
+                  aspect-[900/700]
+                  mx-auto
+                "
+              >
+                <Image
+                  src="/assets/phone-groups.png"
+                  alt="Voice Entry Feature Showcase"
+                  fill
+                  priority
+                  className="object-contain"
+                  sizes="(max-width: 640px) 280px, 320px"
+                />
+              </div>
+            </motion.div>
+
             {/* App Badges Container */}
             <div className="flex flex-row flex-nowrap lg:px-14 items-center justify-center xl:justify-start gap-3 mb-10 md:mb-14 w-full">
               {/* Google Play Button */}
@@ -185,7 +213,7 @@ const AiPoweredFeature = () => {
             </div>
           </div>
 
-          {/* RIGHT SIDE: Phone Mockups - Hidden on mobile, visible on tablet and above */}
+          {/* RIGHT SIDE: Phone Mockups (Tablet/Desktop only) - Hidden on mobile */}
           <motion.div
             className="hidden md:flex lg:col-span-7 items-center justify-center lg:justify-end relative mt-6 lg:mt-0"
             initial={{ opacity: 0, x: 100 }}
